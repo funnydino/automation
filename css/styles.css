@@ -126,7 +126,7 @@ body {
   font-size: 16px;
   line-height: 2;
   color: var(--font-color);
-  background: var(--main-color) url('../img/svg/pattern-lines-hero.svg') repeat center/contain;
+  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center/contain;
 }
 
 .body--lock {
@@ -174,7 +174,7 @@ section {
   height: 100px;
   border-bottom: 2px solid var(--border-color);
   color: var(--additional-color);
-  background: var(--main-color) url('../img/svg/pattern-lines-hero.svg') repeat center;
+  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center;
   background-size: unset;
   z-index: 2;
 }
@@ -209,6 +209,7 @@ section {
 }
 
 .header__nav {
+  margin-right: 50px;
   height: 100%;
 }
 
@@ -276,6 +277,79 @@ section {
 
 .nav__link:active::after {
   background-color: var(--active-color);
+}
+
+.header__phone {
+  position: relative;
+  display: block;
+  padding: 7px 0;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+
+.header__phone::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 3px;
+  background-color: transparent;
+  transition: bottom .2s ease, background-color .2s ease;
+}
+
+.header__phone-icon {
+  margin-right: 5px;
+  width: 15px;
+  height: 16px;
+  fill: var(--additional-color);
+  transition: fill .2s ease;
+}
+
+@media (min-width: 1025px) {
+
+  .header__phone:hover {
+    color: var(--hover-color);
+  }
+
+  .header__phone:hover::after {
+    bottom: 10px;
+    background-color: var(--hover-color);
+  }
+
+  .header__phone:hover .header__phone-icon {
+    fill: var(--hover-color)
+  }
+
+}
+
+.header__phone:active {
+  color: var(--active-color);
+}
+
+.header__phone:active::after {
+  bottom: 10px;
+  background-color: var(--active-color);
+}
+
+.header__phone:active .header__phone-icon {
+  fill: var(--active-color)
+}
+
+.header__phone.focus-visible {
+  outline: none;
+  color: var(--hover-color);
+}
+
+.header__phone.focus-visible::after {
+  bottom: 10px;
+  background-color: var(--hover-color);
+}
+
+.header__phone.focus-visible .header__phone-icon {
+  fill: var(--hover-color)
 }
 
 /* Burger Button */
@@ -410,7 +484,7 @@ section {
 
 .about {
   border-top: 2px solid var(--border-color);
-  background: var(--main-color) url('../img/svg/pattern-lines-hero.svg') repeat center/contain;
+  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center/contain;
 }
 
 .about__container {
@@ -425,7 +499,7 @@ section {
 
 .production {
   color: var(--additional-color);
-  background: var(--secondary-color) url('../img/svg/pattern-dots.svg') repeat center;
+  background: var(--secondary-color) url('../img/svg/bg/pattern-dots.svg') repeat center;
 }
 
 .production__list {
@@ -596,15 +670,22 @@ section {
 /* Footer */
 
 .footer {
-  padding: 35px 0;
+  padding: 70px 0;
   border-top: 2px solid var(--border-color);
   color: var(--additional-color);
-  background: var(--main-color) url('../img/svg/pattern-lines-hero.svg') repeat center;
+  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center;
 }
 
 .footer__inner {
   display: flex;
   justify-content: space-between;
+}
+
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 400px;
 }
 
 .footer__logo {
@@ -615,11 +696,70 @@ section {
   width: 300px;
 }
 
+.contacts__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contacts__item {
+  margin: 0 25px 25px 0;
+  width: 65px;
+  height: 65px;
+}
+
+.contacts__link {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  filter: grayscale(1);
+  transition: filter .2s ease, transform .2s ease;
+}
+
+.contacts__link--tel {
+  background-image: url('../img/svg/social/phone.svg');
+}
+
+.contacts__link--mail {
+  background-image: url('../img/svg/social/email.svg');
+}
+
+.contacts__link--telegram {
+  background-image: url('../img/svg/social/telegram_logo.svg');
+}
+
+.contacts__link--whatsapp {
+  background-image: url('../img/svg/social/whatsapp_logo.svg');
+}
+
+.contacts__link--vk {
+  background-image: url('../img/svg/social/vk_logo.svg');
+}
+
+.contacts__link--instagram {
+  background-image: url('../img/svg/social/instagram_logo.svg');
+}
+
+@media (min-width: 1025px) {
+
+  .contacts__link:hover {
+    filter: grayscale(0);
+  }
+
+}
+
+.contacts__link:active {
+  filter: grayscale(0);
+  transform: scale(.95);
+}
+
 /* Feedback Form */
 
 .form {
   position: relative;
-  flex: 0 1 350px;
+  flex: 0 1 400px;
 }
 
 .form::after {
@@ -629,7 +769,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(6, 27, 51, .5) url('../img/loading.gif') center / 75px no-repeat;
+  background: rgba(34, 34, 34, .5) url('../img/loading.gif') center / 75px no-repeat;
   opacity: 0;
   visibility: hidden;
   transition: opacity .35s ease, visibility .35s ease;
@@ -697,7 +837,7 @@ section {
 
   .feedback__input:hover::placeholder,
   .feedback__message:hover::placeholder {
-    opacity: .65;
+    opacity: .75;
   }
 
 }
@@ -713,7 +853,8 @@ section {
   border: 3px solid var(--hover-color);
   font-size: 18px;
   font-weight: 500;
-  background-color: transparent;
+  color: var(--font-color);
+  background-color: var(--hover-color);
   cursor: pointer;
   transition: color .2s ease, background-color .2s ease, border-color .2s ease;
 }
@@ -721,16 +862,16 @@ section {
 @media (min-width: 1025px) {
 
   .feedback__btn:hover {
-    color: var(--font-color);
-    background-color: var(--hover-color);
+    color: var(--additional-color);
+    background-color: transparent;
   }
 
 }
 
 .feedback__btn:active {
-  border-color: var(--active-color);
-  color: var(--active-color);
-  background-color: var(--hover-color);
+  border-color: var(--secondary-color);
+  color: var(--additional-color);
+  background-color: transparent;
 }
 
 /* Стилизация Checkbox */
@@ -766,7 +907,7 @@ section {
   align-self: flex-start;
   margin-right: 10px;
   height: 24px;
-  border: 2px solid var(--border-color);
+  border: 2px solid var(--secondary-color);
   border-radius: 4px;
   background-color: transparent;
   transition: box-shadow .2s ease;
@@ -780,7 +921,7 @@ section {
   width: 14px;
   height: 14px;
   border-radius: 4px;
-  background-color: var(--border-color);
+  background-color: var(--secondary-color);
   transform: scale(0);
   transition: transform .35s ease;
 }
