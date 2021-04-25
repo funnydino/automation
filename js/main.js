@@ -152,24 +152,33 @@
       };
       if (document.documentElement.clientHeight / 2 >= $partnersSection.getBoundingClientRect().top) {
         partnersAnimations.play();
+        stopAutoListProducts();
       };
     };
-
-    pageAnimation();
 
     // GSAP Active Products Animations:
 
     const showProductsDescr = gsap.timeline({
-      paused: true,
-      reversed: true,
-    });
-
-    showProductsDescr.from($productsDescrInner, {
-      duration: .75,
-      y: 25,
-      height: 0,
-      opacity: 0,
-    });
+        paused: true,
+        reversed: true,
+      })
+      .fromTo($productsDescrInner, {
+        y: 0,
+        lineHeight: 0,
+        // scale: .5,
+        transform: "perspective(600px) translate(0px, -100%) rotateX(45deg)",
+        yPercent: -15,
+        opacity: 0,
+      }, {
+        duration: .75,
+        ease: "power1",
+        y: 25,
+        lineHeight: 2,
+        // scale: 1,
+        transform: "perspective(600px) translate(0px, 0%) rotateX(0deg)",
+        yPercent: 0,
+        opacity: 1,
+      });
 
     // Active Products:
 
@@ -187,9 +196,9 @@
     };
 
     const hideAllDescription = () => {
-      showProductsDescr.reverse();
       $productsButtons.forEach(el => el.parentNode.classList.remove('production__item--active'));
       $productsButtons.forEach(el => el.classList.remove('production__item-btn--active'));
+      showProductsDescr.reverse();
     };
 
     const autoListProducts = () => {
@@ -212,10 +221,14 @@
         autoListProducts();
       } else {
         if (autoListTimer) {
-          autoListTimer = false;
-          clearTimeout(autoListStart);
+          stopAutoListProducts();
         };
       };
+    };
+
+    const stopAutoListProducts = () => {
+      autoListTimer = false;
+      clearTimeout(autoListStart);
     };
 
     startAutoListProducts();
@@ -228,6 +241,8 @@
       };
       showDescription(el);
     }));
+
+    pageAnimation();
 
   });
 
