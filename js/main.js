@@ -167,6 +167,7 @@
     showProductsDescr.from($productsDescrInner, {
       duration: .75,
       y: 25,
+      height: 0,
       opacity: 0,
     });
 
