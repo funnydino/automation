@@ -547,7 +547,6 @@ section {
   height: auto;
   transform: scale(.85);
   filter: grayscale(.5);
-  /* transition: color .2s ease; */
   transition: transform .5s ease, filter .2s ease;
 }
 
@@ -566,16 +565,6 @@ section {
     background: linear-gradient(rgba(255, 255, 255, 0) 15%, var(--main-color) 100%);
   }
 
-  /* .production__item-btn:hover .production__icon--gates,
-  .production__item-btn:hover .production__icon--sliding-gates {
-    color: var(--hover-color);
-  } */
-
-  /* .production__item-btn:hover .production__icon--barrier,
-  .production__item-btn:hover .production__icon--garage {
-    color: var(--active-color);
-  } */
-
 }
 
 .production__item-btn--active {
@@ -587,20 +576,15 @@ section {
   filter: grayscale(0);
 }
 
+.production__item-btn--active .production__icon use {
+  box-shadow: 0 0 5px var(--hover-color);
+}
+  
+
 .production__item-btn--active::before,
 .production__item-btn--active::after {
   background: linear-gradient(rgba(255, 255, 255, 0) 15%, var(--main-color) 100%);
 }
-
-/* .production__item-btn--active .production__icon--gates,
-.production__item-btn--active .production__icon--sliding-gates {
-  color: var(--hover-color);
-} */
-
-/* .production__item-btn--active .production__icon--barrier,
-.production__item-btn--active .production__icon--garage {
-  color: var(--active-color);
-} */
 
 .production__item-btn.focus-visible {
   outline: none;
@@ -620,7 +604,7 @@ section {
   display: none;
 }
 
-.production__title {
+.production__subtitle {
   font-size: 32px;
   font-weight: 500;
 }
@@ -628,14 +612,7 @@ section {
 .production__description {
   position: relative;
   top: -5px;
-  padding: 35px;
   border-top: 5px solid var(--main-color);
-  border-radius: 55px;
-  background: linear-gradient(rgba(255, 255, 255, 1) 5px, rgba(243, 243, 243, 0.35) 25px, rgba(255, 255, 255, 0) 40px);
-}
-
-.production__description-inner {
-  position: relative;
 }
 
 /* Partners Section */

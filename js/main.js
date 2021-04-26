@@ -64,9 +64,8 @@
     const headerAnimation = gsap.timeline({
       paused: true,
       reversed: true,
-    });
-
-    headerAnimation.from('.header__logo-icon', {
+    })
+    .from('.header__logo-icon', {
         duration: 1,
         y: 15,
         scale: .75,
@@ -87,9 +86,8 @@
     const heroAnimation = gsap.timeline({
       paused: true,
       reversed: true,
-    });
-
-    heroAnimation.from('.hero__title', {
+    })
+    .from('.hero__title', {
         duration: 1,
         scale: .75,
         opacity: 0,
@@ -103,9 +101,8 @@
     const aboutAnimation = gsap.timeline({
       paused: true,
       reversed: true,
-    });
-
-    aboutAnimation.from('.about__title', {
+    })
+    .from('.about__title', {
         duration: .75,
         scale: .75,
         opacity: 0,
@@ -120,9 +117,8 @@
     const productionAnimations = gsap.timeline({
       paused: true,
       reversed: true,
-    });
-
-    productionAnimations.from('.production__title', {
+    })
+    .from('.production__title', {
       duration: 1,
       y: -50,
       opacity: 0,
@@ -131,9 +127,8 @@
     const partnersAnimations = gsap.timeline({
       paused: true,
       reversed: true,
-    });
-
-    partnersAnimations.from('.partners__item', {
+    })
+    .from('.partners__item', {
       duration: .75,
       y: "random(-35, 35)",
       opacity: 0,
@@ -162,23 +157,25 @@
         paused: true,
         reversed: true,
       })
+      .fromTo($productsDescrContainer, {
+        padding: "0 35px",
+        borderRadius: 25,
+        background: "linear-gradient(rgba(255, 255, 255, 1) 3px, rgba(243, 243, 243, 0.35) 15px, rgba(255, 255, 255, 0) 20px)",
+      }, {
+        duration: .75,
+        padding: 35,
+        borderRadius: 55,
+        background: "linear-gradient(rgba(255, 255, 255, 1) 5px, rgba(243, 243, 243, 0.35) 25px, rgba(255, 255, 255, 0) 40px)",
+      }, "-=.75")
       .fromTo($productsDescrInner, {
         y: 0,
-        lineHeight: 0,
-        // scale: .5,
-        transform: "perspective(600px) translate(0px, -100%) rotateX(45deg)",
-        yPercent: -15,
         opacity: 0,
       }, {
         duration: .75,
         ease: "power1",
         y: 25,
-        lineHeight: 2,
-        // scale: 1,
-        transform: "perspective(600px) translate(0px, 0%) rotateX(0deg)",
-        yPercent: 0,
         opacity: 1,
-      });
+      }, "-=.75");
 
     // Active Products:
 
