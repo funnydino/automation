@@ -22,11 +22,11 @@
 </head>
 
 <body class="body">
-  <div class="overlay"></div>
+  <div class="overlay fix-block"></div>
 
   <!-- Header -->
 
-  <header class="header">
+  <header class="header fix-block">
     <!-- <div class="header__inner"> -->
     <div class="container header__container">
       <svg class="logo-icon header__logo-icon">
@@ -111,6 +111,43 @@
         </div>
       </section>
 
+      <!-- Advantages Section -->
+
+      <section class="advantages" id="advantages">
+        <div class="container advantages__container">
+          <div class="advantages__inner">
+            <h2 class="section-title advantages__title visually-hidden">Преимущества</h2>
+            <ul class="advantages__list">
+              <li class="advantages__item advantages__item-quality">
+                <h3 class="section-subtitle advantages__subtitle">
+                  Высокое качество
+                </h3>
+              </li>
+              <li class="advantages__item advantages__item-guarantee">
+                <h3 class="section-subtitle advantages__subtitle">
+                  Гарантия
+                </h3>
+              </li>
+              <li class="advantages__item advantages__item-experience">
+                <h3 class="section-subtitle advantages__subtitle">
+                  Опыт
+                </h3>
+              </li>
+              <li class="advantages__item advantages__item-reviews">
+                <h3 class="section-subtitle advantages__subtitle">
+                  Оценка работы
+                </h3>
+              </li>
+              <li class="advantages__item advantages__item-approach">
+                <h3 class="section-subtitle advantages__subtitle">
+                  Индивидуальный подход
+                </h3>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- Production Section -->
 
       <section class="production" id="production">
@@ -124,6 +161,9 @@
                 </svg>
               </button>
               <div class="production__content">
+                <div class="production__image-inner">
+                  <div class="production__image production__image-swing"></div>
+                </div>
                 <h3 class="section-subtitle production__subtitle">
                   Распашные ворота
                 </h3>
@@ -161,6 +201,9 @@
                 </svg>
               </button>
               <div class="production__content">
+                <div class="production__image-inner">
+                  <div class="production__image production__image-sliding"></div>
+                </div>
                 <h3 class="section-subtitle production__subtitle">
                   Откатные ворота
                 </h3>
@@ -206,6 +249,9 @@
                 </svg>
               </button>
               <div class="production__content">
+                <div class="production__image-inner">
+                  <div class="production__image production__image-barrier"></div>
+                </div>
                 <h3 class="section-subtitle production__subtitle">
                   Шлагбаумы и барьеры
                 </h3>
@@ -255,6 +301,9 @@
                 </svg>
               </button>
               <div class="production__content">
+                <div class="production__image-inner">
+                  <div class="production__image production__image-garage"></div>
+                </div>
                 <h3 class="section-subtitle production__subtitle">
                   Секционные ворота
                 </h3>
@@ -364,8 +413,8 @@
               </div>
             </div>
           </div>
-          <div class="footer__form">
-            <form class="form feedback form__feedback" id="feedback" action="#" aria-label="Форма обратной связи">
+          <div class="form footer__form">
+            <form class="feedback form__feedback" id="feedback" action="#" aria-label="Форма обратной связи">
               <h2 class="form__title section-subtitle">
                 Оставить заявку / отзыв
               </h2>
@@ -391,16 +440,29 @@
     </footer> <!-- /.footer -->
 
     <!-- Copyright -->
+
     <div class="copyright">
       <div class="container copyright__container">
         <div class="copyright__info">
-          &copy; 2021. Разработка сайта - Пономарёв Алексей.
+          &copy; <span class="copyright__year"></span>. Разработка сайта - Пономарёв Алексей.
           <a class="copyright__mail" href="mailto:funnydino1@mail.ru">
             funnydino1@gmail.com
           </a>
         </div>
       </div>
     </div> <!-- /.copyright -->
+
+    <!-- Popups -->
+
+    <div class="popups">
+      <div class="popups__overlay fix-block">
+        <div class="popup popup-email">
+          <button class="popup__close"></button>
+          <img class="popup-email__img" src="#" alt="Иконка почтового конверта">
+          <p class="popup-email__message"></p>
+        </div>
+      </div>
+    </div> <!-- /.popups -->
 
   </div>
 
