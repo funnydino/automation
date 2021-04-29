@@ -14,7 +14,6 @@
     const $burger = document.querySelector('.burger');
     const $navMenu = document.querySelector('.header__nav');
     const $mobileMenu = document.querySelector('.mobile-menu');
-    // const $navMenuItems = document.querySelectorAll('.nav__item');
     const $fixBlocks = document.querySelectorAll('.fix-block');
     const $productsButtons = document.querySelectorAll('.production__item-btn');
     const $productsDescrContainer = document.querySelector('.production__description');
@@ -62,17 +61,13 @@
     const menuOpen = () => {
       disableScroll();
       $body.classList.add('body--lock');
-      // $overlay.classList.add('overlay--active');
-      // $mobileMenu.classList.add('mobile-menu--visible');
       openMenu.play();
     };
 
     const menuClose = () => {
-      // $overlay.classList.remove('overlay--active');
       openMenu.reverse();
       setTimeout(() => {
         $body.classList.remove('body--lock');
-        // $mobileMenu.classList.remove('mobile-menu--visible');
         enableScroll();
       }, openMenu.duration() * 1000);
     };
@@ -83,7 +78,7 @@
       window.scroll({
         left: 0,
         top: element.offsetTop,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     };
 
@@ -93,12 +88,16 @@
       elemScroll.addEventListener('click', (e) => {
         e.preventDefault();
         const id = elemScroll.getAttribute('data-scroll').replace('#', '');
-        smoothScroll(document.getElementById(id));
+        if (elemScroll.classList.contains('menu__link')) {
+          $burger.classList.remove('header__burger--close');
+          menuClose();
+          setTimeout(() => {
+            smoothScroll(document.getElementById(id));
+          }, openMenu.duration() * 1000);
+        } else {
+          smoothScroll(document.getElementById(id));
+        };
       });
-    });
-
-    window.addEventListener('scroll', () => {
-      pageAnimation();
     });
 
     // Disable & Enable Scroll (убираем прыжок при открытии меню или модального окна):
@@ -122,6 +121,9 @@
 
     // GSAP Animations:
 
+    const burgerRule1 = CSSRulePlugin.getRule(".header__burger:before"),
+      burgerRule2 = CSSRulePlugin.getRule(".header__burger:after");
+
     const openMenu = gsap.timeline({
         paused: true,
         reversed: true,
@@ -129,21 +131,49 @@
       .set($mobileMenu, {
         top: 0,
       })
+      .fromTo('.header__burger-center-line', {
+        opacity: 1,
+      }, {
+        duration: .25,
+        opacity: 0,
+      })
+      .to(burgerRule1, {
+        duration: .25,
+        top: "50%",
+      })
+      .to(burgerRule2, {
+        duration: .25,
+        bottom: "50%",
+      }, "-=.25")
+      .to(burgerRule1, {
+        duration: .35,
+        transform: 'rotate(45deg) translateY(-50%)',
+      })
+      .to(burgerRule2, {
+        duration: .35,
+        bottom: "50%",
+        transform: 'rotate(-45deg) translateY(50%)',
+      }, "-=.35")
       .fromTo('.menu__list', {
         x: "-100vw",
         opacity: 0,
       }, {
-        duration: .75,
+        duration: .5,
         x: 0,
         width: "100%",
         opacity: 1,
+      }, "-=.85")
+      .to('.header__phone', {
+        duration: .5,
+        left: 0,
+        fontSize: 22,
       })
       .from('.menu__link span', {
         duration: 1,
         y: 25,
         opacity: 0,
-        stagger: .35,
-      });
+        stagger: .25,
+      }, "-=.75");
 
     if (!mobileDevices.matches) {
 
@@ -254,6 +284,10 @@
       };
     };
 
+    window.addEventListener('scroll', () => {
+      pageAnimation();
+    });
+
     const openPopup = gsap.timeline({
         paused: true,
         reversed: true,
@@ -277,13 +311,9 @@
       })
       .fromTo($productsDescrContainer, {
         padding: "0 35px",
-        // borderRadius: 25,
-        // background: "linear-gradient(rgba(255, 255, 255, 1) 3px, rgba(243, 243, 243, 0.35) 15px, rgba(255, 255, 255, 0) 20px)",
       }, {
         duration: .75,
         padding: 35,
-        // borderRadius: 55,
-        // background: "linear-gradient(rgba(255, 255, 255, 1) 5px, rgba(243, 243, 243, 0.35) 25px, rgba(255, 255, 255, 0) 40px)",
       }, "-=.75")
       .fromTo($productsDescrInner, {
         y: 0,
@@ -334,10 +364,8 @@
       if (window.innerWidth > 1024) {
         autoListTimer = true;
         autoListProducts();
-      } else {
-        if (autoListTimer) {
-          stopAutoListProducts();
-        };
+      } else if (window.innerWidth <= 1024 || autoListTimer) {
+        stopAutoListProducts();
       };
     };
 
@@ -345,7 +373,7 @@
       autoListTimer = false;
       clearTimeout(autoListStart);
       if (!document.querySelector('.production__item-btn--active')) {
-        document.querySelector('.production__item-btn:first-child').click();
+        showDescription($productsButtons[0]);
       };
     };
 
