@@ -12,14 +12,70 @@
     const $partnersSection = document.querySelector('.partners');
     const $overlay = document.querySelector('.overlay');
     const $burger = document.querySelector('.burger');
+    const $navMenu = document.querySelector('.header__nav');
+    const $mobileMenu = document.querySelector('.mobile-menu');
+    // const $navMenuItems = document.querySelectorAll('.nav__item');
     const $fixBlocks = document.querySelectorAll('.fix-block');
     const $productsButtons = document.querySelectorAll('.production__item-btn');
     const $productsDescrContainer = document.querySelector('.production__description');
     const $productsDescrInner = document.querySelector('.production__description-inner');
 
+    const mobileDevices = window.matchMedia("(max-width: 1024px)");
+
     // Прописываем текущий год в блок Copyright:
 
     document.querySelector('.copyright__year').innerText = new Date().getFullYear();
+
+    // Слушатель событий на изменение ширины окна браузера:
+
+    window.onresize = () => {
+
+      mobileMenu();
+
+    };
+
+    const mobileMenu = () => {
+      if (mobileDevices.matches) {
+        $navMenu.classList.add('header__nav--hidden');
+        $mobileMenu.classList.add('mobile-menu--visible');
+        // $navMenuItems.forEach((el) => el.classList.add('nav__item--mobile'));
+      } else {
+        $navMenu.classList.remove('header__nav--hidden');
+        $mobileMenu.classList.remove('mobile-menu--visible');
+        // $navMenuItems.forEach((el) => el.classList.remove('nav__item--mobile'));
+      };
+    };
+
+    mobileMenu();
+
+    // Nav-Menu on mobile devices:
+
+    $burger.addEventListener('click', () => {
+      $burger.classList.toggle('header__burger--close');
+      if ($burger.classList.contains('header__burger--close')) {
+        menuOpen();
+      } else {
+        menuClose();
+      };
+    });
+
+    const menuOpen = () => {
+      disableScroll();
+      $body.classList.add('body--lock');
+      // $overlay.classList.add('overlay--active');
+      // $mobileMenu.classList.add('mobile-menu--visible');
+      openMenu.play();
+    };
+
+    const menuClose = () => {
+      // $overlay.classList.remove('overlay--active');
+      openMenu.reverse();
+      setTimeout(() => {
+        $body.classList.remove('body--lock');
+        // $mobileMenu.classList.remove('mobile-menu--visible');
+        enableScroll();
+      }, openMenu.duration() * 1000);
+    };
 
     // Плавная прокрутка страницы:
 
@@ -66,29 +122,56 @@
 
     // GSAP Animations:
 
-    const headerAnimation = gsap.timeline({
+    const openMenu = gsap.timeline({
         paused: true,
         reversed: true,
       })
-      .from('.header__logo-icon', {
-        duration: 1,
-        y: 15,
-        scale: .75,
-        opacity: 0,
+      .set($mobileMenu, {
+        top: 0,
       })
-      .from('.header__logo-text', {
-        duration: 1,
-        y: 15,
+      .fromTo('.menu__list', {
+        x: "-100vw",
         opacity: 0,
-      }, "-=.5")
-      .from('.nav__item', {
+      }, {
+        duration: .75,
+        x: 0,
+        width: "100%",
+        opacity: 1,
+      })
+      .from('.menu__link span', {
         duration: 1,
         y: 25,
         opacity: 0,
         stagger: .35,
       });
 
-    headerAnimation.play();
+    if (!mobileDevices.matches) {
+
+      const headerAnimation = gsap.timeline({
+          paused: true,
+          reversed: true,
+        })
+        .from('.header__logo-icon', {
+          duration: 1,
+          y: 15,
+          scale: .75,
+          opacity: 0,
+        })
+        .from('.header__logo-text', {
+          duration: 1,
+          y: 15,
+          opacity: 0,
+        }, "-=.5")
+        .from('.nav__item', {
+          duration: 1,
+          y: 25,
+          opacity: 0,
+          stagger: .35,
+        });
+
+      headerAnimation.play();
+
+    };
 
     const heroAnimation = gsap.timeline({
         paused: true,
@@ -194,13 +277,13 @@
       })
       .fromTo($productsDescrContainer, {
         padding: "0 35px",
-        borderRadius: 25,
-        background: "linear-gradient(rgba(255, 255, 255, 1) 3px, rgba(243, 243, 243, 0.35) 15px, rgba(255, 255, 255, 0) 20px)",
+        // borderRadius: 25,
+        // background: "linear-gradient(rgba(255, 255, 255, 1) 3px, rgba(243, 243, 243, 0.35) 15px, rgba(255, 255, 255, 0) 20px)",
       }, {
         duration: .75,
         padding: 35,
-        borderRadius: 55,
-        background: "linear-gradient(rgba(255, 255, 255, 1) 5px, rgba(243, 243, 243, 0.35) 25px, rgba(255, 255, 255, 0) 40px)",
+        // borderRadius: 55,
+        // background: "linear-gradient(rgba(255, 255, 255, 1) 5px, rgba(243, 243, 243, 0.35) 25px, rgba(255, 255, 255, 0) 40px)",
       }, "-=.75")
       .fromTo($productsDescrInner, {
         y: 0,
@@ -261,6 +344,9 @@
     const stopAutoListProducts = () => {
       autoListTimer = false;
       clearTimeout(autoListStart);
+      if (!document.querySelector('.production__item-btn--active')) {
+        document.querySelector('.production__item-btn:first-child').click();
+      };
     };
 
     startAutoListProducts();
@@ -271,7 +357,9 @@
         autoListTimer = false;
         clearTimeout(autoListStart);
       };
-      showDescription(el);
+      if (!el.classList.contains('production__item-btn--active')) {
+        showDescription(el);
+      };
     }));
 
     pageAnimation();
@@ -324,7 +412,7 @@
     });
 
     document.addEventListener('keydown', function (e) {
-      if (e.keyCode === 27) {
+      if (e.keyCode === 27 && document.querySelector('.popup--active')) {
         const $popupActive = document.querySelector('.popups__overlay--visible');
         popupClose($popupActive);
       };

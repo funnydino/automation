@@ -24,46 +24,70 @@
 <body class="body">
   <div class="overlay fix-block"></div>
 
+  <!-- Mobile Menu -->
+
+  <div class="mobile-menu fix-block">
+    <ul class="menu menu__list">
+      <li class="menu__item">
+        <a class="menu__link" href="#about" data-scroll="#about">
+          <span>О себе</span>
+        </a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="#production" data-scroll="#production">
+          <span>Продукция</span>
+        </a>
+      </li>
+      <li class="menu__item">
+        <a class="menu__link" href="#footer" data-scroll="#footer">
+          <span>Контакты</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
   <!-- Header -->
 
-  <header class="header fix-block">
+  <header class="header">
     <!-- <div class="header__inner"> -->
     <div class="container header__container">
-      <svg class="logo-icon header__logo-icon">
-        <use xlink:href="./img/svg/sprite.svg#logo"></use>
-      </svg>
-      <svg class="logo-text header__logo-text" xmlns="//www.w3.org/2000/svg" viewbox="0 0 250 50">
-        <text x="0" y="20" font-weight="bold">ИП</text>
-        <text x="0" y="50" font-size="22px" fill="#f9dd79">Семенюк А. И.</text>
-      </svg>
-      <nav class="nav header__nav">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a class="nav__link" href="#about" data-scroll="#about">
-              О себе
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#production" data-scroll="#production">
-              Продукция
-            </a>
-          </li>
-          <li class="nav__item">
-            <a class="nav__link" href="#footer" data-scroll="#footer">
-              Контакты
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <a class="header__phone" href="tel:+79114777066">
-        <svg class="header__phone-icon">
-          <use xlink:href="./img/svg/sprite.svg#phone"></use>
+      <div class="header__inner">
+        <svg class="logo-icon header__logo-icon">
+          <use xlink:href="./img/svg/sprite.svg#logo"></use>
         </svg>
-        <span class="header__phone-number">+7 911 477 70 66</span>
-      </a>
-      <button class="header__burger burger" aria-label="Открыть меню">
-        <span class="header__burger-center-line"></span>
-      </button>
+        <svg class="logo-text header__logo-text" xmlns="//www.w3.org/2000/svg" viewbox="0 0 250 50">
+          <text x="0" y="20" font-weight="bold">ИП</text>
+          <text x="0" y="50" font-size="22px" fill="#f9dd79">Семенюк А. И.</text>
+        </svg>
+        <nav class="nav header__nav">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a class="nav__link" href="#about" data-scroll="#about">
+                <span>О себе</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#production" data-scroll="#production">
+                <span>Продукция</span>
+              </a>
+            </li>
+            <li class="nav__item">
+              <a class="nav__link" href="#footer" data-scroll="#footer">
+                <span>Контакты</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <a class="header__phone" href="tel:+79114777066" aria-label="Позвонить по номеру: +79114777066">
+          <svg class="header__phone-icon">
+            <use xlink:href="./img/svg/sprite.svg#phone"></use>
+          </svg>
+          <span class="header__phone-number">+7 911 477 70 66</span>
+        </a>
+        <button class="header__burger burger" aria-label="Открыть меню">
+          <span class="header__burger-center-line"></span>
+        </button>
+      </div>
     </div>
     <!-- </div> -->
   </header> <!-- /.header -->
@@ -155,7 +179,7 @@
           <h2 class="section-title production__title">Продукция</h2>
           <ul class="production__list">
             <li class="production__item">
-              <button class="production__item-btn">
+              <button class="production__item-btn" aria-label="Распашные ворота">
                 <svg class="production__icon production__icon--gates">
                   <use xlink:href="./img/svg/sprite.svg#gates"></use>
                 </svg>
@@ -195,7 +219,7 @@
               </div>
             </li>
             <li class="production__item">
-              <button class="production__item-btn">
+              <button class="production__item-btn" aria-label="Откатные ворота">
                 <svg class="production__icon production__icon--sliding-gates">
                   <use xlink:href="./img/svg/sprite.svg#sliding-gates"></use>
                 </svg>
@@ -243,7 +267,7 @@
               </div>
             </li>
             <li class="production__item">
-              <button class="production__item-btn">
+              <button class="production__item-btn" aria-label="Шлагбаумы и барьеры">
                 <svg class="production__icon production__icon--barrier">
                   <use xlink:href="./img/svg/sprite.svg#barrier"></use>
                 </svg>
@@ -275,7 +299,7 @@
                 </p>
                 <p class="section-text production__text">
                   Можно заказать установку шлагбаума в соответствии с индивидуальными потребностями и характеристиками
-                  территории, а также мы пможем подобрать готовое решение. В каталогах на сайтах наших партнёров
+                  территории, а также мы поможем подобрать готовое решение. В каталогах на сайтах наших партнёров
                   представлены комплекты шлагбаумов для различной ширины проезда и условий эксплуатации. А отдельные
                   модели могут управляться дистанционно из любой точки мира, благодаря подключению к облачному сервису.
                 </p>
@@ -295,7 +319,7 @@
               </div>
             </li>
             <li class="production__item">
-              <button class="production__item-btn">
+              <button class="production__item-btn" aria-label="Секционные ворота">
                 <svg class="production__icon production__icon--garage">
                   <use xlink:href="./img/svg/sprite.svg#garage"></use>
                 </svg>
@@ -416,12 +440,12 @@
           <div class="form footer__form">
             <form class="feedback form__feedback" id="feedback" action="#" aria-label="Форма обратной связи">
               <h2 class="form__title section-subtitle">
-                Оставить заявку / отзыв
+                Оставить заявку
               </h2>
-              <label for="name" class="visually-hidden">Введите в поле ваше имя</label>
+              <label for="name" class="visually-hidden">Введите ваше имя</label>
               <input id="name" class="feedback__input required feedback__input--name" type="text" name="name"
                 placeholder="Ваше имя*">
-              <label for="email" class="visually-hidden">Введите в поле ваш адрес электронной почты</label>
+              <label for="email" class="visually-hidden">Введите ваш адрес электронной почты</label>
               <input id="email" class="feedback__input required feedback__input--email" type="email" name="email"
                 placeholder="E-mail*">
               <label for="message" class="visually-hidden">Введите ваше сообщение</label>

@@ -168,6 +168,68 @@ section {
   font-weight: 500;
 }
 
+/* Mobile Menu */
+
+.mobile-menu {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 1;
+}
+
+.mobile-menu--visible {
+  display: block;
+}
+
+.menu__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  /* width: 100%; */
+  height: 100%;
+}
+
+.menu__item {
+  flex: 1;
+}
+
+.menu__item:not(:last-child) {
+  border-bottom: 2px solid var(--border-color);
+}
+
+.menu__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 22px;
+  color: var(--additional-color);
+  text-decoration: none;
+  background: var(--main-color) url('../img/svg/bg/pattern-dots.svg') repeat center;
+  transition: color .5s ease;
+}
+
+.menu__link span {
+  position: relative;
+}
+
+.menu__link span::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 50%;
+  height: 3px;
+  background-color: var(--additional-color);
+  opacity: 0;
+  transition: width .35s ease, background-color .35s ease, opacity .35s ease;
+}
+
 /* Header */
 
 .header {
@@ -180,6 +242,11 @@ section {
 }
 
 .header__container {
+  height: 100%;
+}
+
+.header__inner {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -211,6 +278,7 @@ section {
 .header__nav {
   margin-right: 50px;
   height: 100%;
+  z-index: 1;
 }
 
 .nav__list {
@@ -277,6 +345,7 @@ section {
 
 .nav__link:active::after {
   background-color: var(--active-color);
+  opacity: 1;
 }
 
 .header__phone {
@@ -359,6 +428,7 @@ section {
   display: none;
   width: 35px;
   height: 30px;
+  z-index: 12;
 }
 
 .header__burger-center-line,
@@ -370,7 +440,7 @@ section {
   width: 100%;
   height: 3px;
   background-color: var(--additional-color);
-  transition: width .2s ease, background-color .2s ease, transform .2s ease;
+  transition: width .2s ease, background-color .2s ease, transform .2s ease, opacity .2s ease, visibility .2s ease;
 }
 
 .header__burger-center-line {
@@ -384,6 +454,21 @@ section {
 
 .header__burger::after {
   bottom: 0;
+}
+
+.header__burger--close .header__burger-center-line {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.header__burger--close::before {
+  top: 50%;
+  transform: rotate(45deg) translateY(-50%);
+}
+
+.header__burger--close::after {
+  bottom: 50%;
+  transform: rotate(-45deg) translateY(50%);
 }
 
 @media (min-width: 1025px) {
@@ -478,6 +563,8 @@ section {
 
 .hero__link:active {
   border-color: var(--active-color);
+  color: var(--additional-color);
+  background-color: transparent;
 }
 
 /* About Section */
@@ -573,9 +660,9 @@ section {
   /* background: var(--secondary-color) url('../img/svg/bg/pattern-dots.svg') repeat center; */
   background-color: var(--secondary-color);
   background-image: url('../img/svg/bg/pattern-dots.svg'), url('../img/svg/bg/gate.svg'), url('../img/svg/bg/barrier.svg');
-  background-position: center, right 200px top 125px, left 150px top 135px;
+  background-position: center, right calc(100vw - 100vw*.95) top calc(100vh - 100vh*.85), left calc(100vw - 100vw*.95) bottom calc(100vh - 100vh*.85);
   background-repeat: repeat, no-repeat, no-repeat;
-  background-size: auto, 500px auto, 400px auto;
+  background-size: auto, 550px auto, 400px auto;
 }
 
 .production__title {
@@ -633,18 +720,20 @@ section {
 
 @media (min-width: 1025px) {
 
-  .production__item-btn:hover {
+  /* .production__item-btn:hover {
     background: linear-gradient(rgba(255, 255, 255, 0) 35%, rgba(243, 243, 243, .4) 75%, rgba(255, 255, 255, 1) 100%);
-  }
+  } */
 
   .production__item-btn:hover .production__icon {
+    transform: scale(.9);
     filter: grayscale(0);
   }
 
-  .production__item-btn:hover::before,
+  /* .production__item-btn:hover::before,
   .production__item-btn:hover::after {
     background: linear-gradient(rgba(255, 255, 255, 0) 15%, var(--main-color) 100%);
-  }
+    background: linear-gradient(rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 1) 100%);
+  } */
 
 }
 
@@ -652,7 +741,8 @@ section {
   background: linear-gradient(rgba(255, 255, 255, 0) 35%, rgba(243, 243, 243, .4) 75%, rgba(255, 255, 255, 1) 100%);
 }
 
-.production__item-btn--active .production__icon {
+.production__item-btn--active .production__icon,
+.production__item-btn--active:hover .production__icon {
   transform: scale(1);
   filter: grayscale(0);
 }
@@ -664,7 +754,8 @@ section {
 
 .production__item-btn--active::before,
 .production__item-btn--active::after {
-  background: linear-gradient(rgba(255, 255, 255, 0) 15%, var(--main-color) 100%);
+  /* background: linear-gradient(rgba(255, 255, 255, 0) 15%, var(--main-color) 100%); */
+  background: linear-gradient(rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 1) 100%);
 }
 
 .production__item-btn.focus-visible {
@@ -678,7 +769,8 @@ section {
 
 .production__item-btn.focus-visible::before,
 .production__item-btn.focus-visible::after {
-  background: linear-gradient(rgba(255, 255, 255, 0) 15%, var(--main-color) 100%);
+  /* background: linear-gradient(rgba(255, 255, 255, 0) 15%, var(--main-color) 100%); */
+  background: linear-gradient(rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 1) 100%);
 }
 
 .production__content {
@@ -729,7 +821,9 @@ section {
   position: relative;
   top: -5px;
   min-height: 300px;
-  border-top: 5px solid var(--main-color);
+  border-radius: 55px;
+  background: linear-gradient(rgba(255, 255, 255, 1) 5px, rgba(243, 243, 243, 0.35) 25px, rgba(255, 255, 255, 0) 40px);
+  /* border-top: 5px solid var(--main-color); */
 }
 
 /* Partners Section */
@@ -1228,3 +1322,63 @@ section {
   line-height: 1.4;
   text-align: center;
 }
+
+/* Media Queries */
+
+@media (max-width: 1366px) {
+
+  .header__nav {
+    margin-right: 70px;
+  }
+
+  .header__phone {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    font-size: 0;
+    transform: translateY(-50%);
+  }
+
+  .header__phone::after {
+    display: none;
+  }
+
+  .header__phone-icon {
+    transform: scale(1.5);
+  }
+
+  .hero {
+    padding: 150px 0;
+  }
+
+  .production {
+    background-size: auto, 450px auto, 300px auto;
+  }
+
+}
+
+@media (max-width: 1024px) {
+
+  /* .header__logo-icon {
+    opacity: 1;
+  } */
+
+  .header__nav--hidden {
+    display: none;
+  }
+
+  .header__phone {
+    right: 75px;
+  }
+
+  .header__burger {
+    display: block;
+  }
+
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 576px) {}
+
+@media (max-width: 375px) {}
