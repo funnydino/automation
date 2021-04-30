@@ -30,3 +30,20 @@
     background-image: url('../img/hero/bg_1920/barrier.jpg');
   }
 }
+
+@keyframes hero__bg-change--1024 {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/hero/bg_1024/tim-foster.jpg');
+  }
+
+  30% {
+    background-image: url('../img/hero/bg_1024/train.jpg');
+  }
+
+  60% {
+    background-image: url('../img/hero/bg_1024/barrier.jpg');
+  }
+}

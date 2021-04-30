@@ -4,7 +4,7 @@
 
   document.addEventListener('DOMContentLoaded', () => {
 
-    const partnersSlider = document.querySelector('.partners__container');
+    const partnersSlider = document.querySelector('.partners__swiper-container');
 
     const desktopRes = window.matchMedia("(min-width: 1367px)");
 
@@ -22,6 +22,8 @@
           speed: 1000,
           loop: true,
           spaceBetween: 50,
+          simulateTouch: false,
+          touchRatio: 2,
           breakpoints: {
             577: {
               slidesPerView: 2,
@@ -51,7 +53,7 @@
         partnersSlider.dataset.loaded = 'false';
         if (partnersSlider.classList.contains('swiper-container-initialized')) {
           partnersSwiper.destroy();
-        }
+        };
       };
 
     };
@@ -103,9 +105,9 @@
       }
     };
 
-    slidersSwiping();
+    // slidersSwiping();
 
-    window.addEventListener('resize', slidersSwiping);
+    // window.addEventListener('resize', slidersSwiping);
 
   });
 

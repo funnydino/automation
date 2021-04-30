@@ -20,6 +20,7 @@
     const $productsDescrInner = document.querySelector('.production__description-inner');
 
     const mobileDevices = window.matchMedia("(max-width: 1024px)");
+    const desktopDevices = window.matchMedia("(min-width: 1367px)");
 
     // Прописываем текущий год в блок Copyright:
 
@@ -37,11 +38,9 @@
       if (mobileDevices.matches) {
         $navMenu.classList.add('header__nav--hidden');
         $mobileMenu.classList.add('mobile-menu--visible');
-        // $navMenuItems.forEach((el) => el.classList.add('nav__item--mobile'));
       } else {
         $navMenu.classList.remove('header__nav--hidden');
         $mobileMenu.classList.remove('mobile-menu--visible');
-        // $navMenuItems.forEach((el) => el.classList.remove('nav__item--mobile'));
       };
     };
 
@@ -54,6 +53,7 @@
       if ($burger.classList.contains('header__burger--close')) {
         menuOpen();
       } else {
+        burgerRotate.restart();
         menuClose();
       };
     });
@@ -121,6 +121,13 @@
 
     // GSAP Animations:
 
+    let burgerRotate = gsap.timeline({
+      paused: true,
+      reversed: true,
+    }).to($burger, .5, {
+      rotation: 360,
+    });
+
     const burgerRule1 = CSSRulePlugin.getRule(".header__burger:before"),
       burgerRule2 = CSSRulePlugin.getRule(".header__burger:after");
 
@@ -162,18 +169,13 @@
         x: 0,
         width: "100%",
         opacity: 1,
-      }, "-=.85")
-      .to('.header__phone', {
-        duration: .5,
-        left: 0,
-        fontSize: 22,
-      })
+      }, "-=.7")
       .from('.menu__link span', {
         duration: 1,
         y: 25,
         opacity: 0,
         stagger: .25,
-      }, "-=.75");
+      });
 
     if (!mobileDevices.matches) {
 
@@ -266,7 +268,11 @@
         y: "random(-35, 35)",
         opacity: 0,
         stagger: .25,
-      });
+      })
+      .from('.partners__buttons', {
+        duration: .75,
+        opacity: 0,
+      }, "-=.5");
 
     const pageAnimation = () => {
       if (document.documentElement.clientHeight / 2 >= $aboutSection.getBoundingClientRect().top) {
@@ -314,7 +320,7 @@
       }, {
         duration: .75,
         padding: 35,
-      }, "-=.75")
+      })
       .fromTo($productsDescrInner, {
         y: 0,
         opacity: 0,
@@ -331,13 +337,15 @@
     let autoListStart;
 
     const showDescription = (el) => {
-      hideAllDescription();
-      el.parentNode.classList.add('production__item--active');
-      el.classList.add('production__item-btn--active');
-      setTimeout(() => {
-        $productsDescrInner.innerHTML = el.parentNode.querySelector('.production__content').innerHTML;
-        showProductsDescr.play();
-      }, showProductsDescr.duration() * 1000);
+      if (!mobileDevices.matches) {
+        hideAllDescription();
+        el.parentNode.classList.add('production__item--active');
+        el.classList.add('production__item-btn--active');
+        setTimeout(() => {
+          $productsDescrInner.innerHTML = el.parentNode.querySelector('.production__content').innerHTML;
+          showProductsDescr.play();
+        }, showProductsDescr.duration() * 1000);
+      };
     };
 
     const hideAllDescription = () => {
@@ -361,10 +369,10 @@
     };
 
     const startAutoListProducts = () => {
-      if (window.innerWidth > 1024) {
+      if (!mobileDevices.matches) {
         autoListTimer = true;
         autoListProducts();
-      } else if (window.innerWidth <= 1024 || autoListTimer) {
+      } else if (mobileDevices.matches || autoListTimer) {
         stopAutoListProducts();
       };
     };
@@ -381,12 +389,22 @@
 
     $productsButtons.forEach((el) => el.addEventListener('click', (e) => {
       e.preventDefault();
-      if (autoListTimer) {
-        autoListTimer = false;
-        clearTimeout(autoListStart);
-      };
-      if (!el.classList.contains('production__item-btn--active')) {
-        showDescription(el);
+      if (!mobileDevices.matches) {
+        if (autoListTimer) {
+          autoListTimer = false;
+          clearTimeout(autoListStart);
+        };
+        if (!el.classList.contains('production__item-btn--active')) {
+          showDescription(el);
+        };
+      } else if (mobileDevices.matches) {
+        if (el.classList.contains('production__item-btn--active')) {
+          el.parentNode.classList.remove('production__item--active');
+          el.classList.remove('production__item-btn--active');
+        } else {
+          el.parentNode.classList.add('production__item--active');
+          el.classList.add('production__item-btn--active');
+        };
       };
     }));
 
