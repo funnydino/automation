@@ -16,11 +16,11 @@
   <link rel="stylesheet" href="./css/fonts.css">
   <link rel="stylesheet" href="./css/keyframes.css">
   <link rel="stylesheet" href="./css/styles.css">
+  <script defer src="./js/CSSRulePlugin.min.js"></script>
   <script defer src="./js/swiper-bundle.min.js"></script>
   <script defer src="./js/focus-visible.min.js"></script>
   <script defer src="./js/swiper.js"></script>
   <script defer src="./js/gsap.min.js"></script>
-  <script defer src="./js/CSSRulePlugin.min.js"></script>
   <script defer src="./js/main.js"></script>
   <title>ИП Семенюк А. И.</title>
 </head>
@@ -105,15 +105,20 @@
       <section class="hero">
         <div class="hero__bg"></div>
         <div class="container hero__container">
-          <h1 class="visually-hidden">
-            Автоматика в калининграде от ведущих производителей
-          </h1>
-          <h2 class="hero__title">
-            Вы&nbsp;достойны лучшего
-          </h2>
-          <a class="hero__link" href="#feedback" data-scroll="#feedback">
-            Оставить заявку
-          </a>
+          <div class="hero__inner">
+            <h1 class="visually-hidden">
+              Автоматика в калининграде от ведущих производителей
+            </h1>
+            <h2 class="hero__title">
+              Вы&nbsp;достойны лучшего
+            </h2>
+            <p class="hero__descr">
+              Монтаж&nbsp;и обслуживание ворот&nbsp;и шлагбаумов в&nbsp;Калининграде
+            </p>
+            <a class="hero__link" href="#footer" data-scroll="#footer">
+              Оставить заявку
+            </a>
+          </div>
         </div>
       </section> <!-- /.hero -->
 
@@ -161,14 +166,14 @@
                   Опыт
                 </h3>
               </li>
-              <li class="advantages__item advantages__item-reviews">
-                <h3 class="section-subtitle advantages__subtitle">
-                  Оценка работы
-                </h3>
-              </li>
               <li class="advantages__item advantages__item-approach">
                 <h3 class="section-subtitle advantages__subtitle">
                   Индивидуальный подход
+                </h3>
+              </li>
+              <li class="advantages__item advantages__item-reviews">
+                <h3 class="section-subtitle advantages__subtitle">
+                  Оценка качества работы
                 </h3>
               </li>
             </ul>
@@ -489,7 +494,7 @@
     <div class="copyright">
       <div class="container copyright__container">
         <div class="copyright__info">
-          &copy; <span class="copyright__year"></span>. Разработка сайта - Пономарёв Алексей.
+          &copy; <span class="copyright__year"></span>. Разработка сайта - Пономарёв&nbsp;Алексей.
           <a class="copyright__mail" href="mailto:funnydino1@mail.ru">
             funnydino1@gmail.com
           </a>

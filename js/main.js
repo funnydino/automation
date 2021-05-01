@@ -15,6 +15,7 @@
     const $navMenu = document.querySelector('.header__nav');
     const $mobileMenu = document.querySelector('.mobile-menu');
     const $fixBlocks = document.querySelectorAll('.fix-block');
+    const $productionItems = document.querySelectorAll('.production__item');
     const $productsButtons = document.querySelectorAll('.production__item-btn');
     const $productsDescrContainer = document.querySelector('.production__description');
     const $productsDescrInner = document.querySelector('.production__description-inner');
@@ -121,6 +122,8 @@
 
     // GSAP Animations:
 
+    // Анимация меню:
+
     let burgerRotate = gsap.timeline({
       paused: true,
       reversed: true,
@@ -177,6 +180,8 @@
         stagger: .25,
       });
 
+    // Анимация шапки (только на десктопах):
+
     if (!mobileDevices.matches) {
 
       const headerAnimation = gsap.timeline({
@@ -205,22 +210,31 @@
 
     };
 
+    // Анимация секции Hero:
+
     const heroAnimation = gsap.timeline({
         paused: true,
         reversed: true,
       })
       .from('.hero__title', {
         duration: 1,
-        scale: .75,
+        y: 75,
         opacity: 0,
       })
+      .from('.hero__descr', {
+        duration: 1,
+        y: 75,
+        opacity: 0,
+      }, "-=.75")
       .from('.hero__link', {
         duration: 1,
         scale: .75,
         opacity: 0,
-      });
+      }, "-=.75");
 
     heroAnimation.play();
+
+    // Анимация секции About:
 
     const aboutAnimation = gsap.timeline({
         paused: true,
@@ -238,6 +252,8 @@
         stagger: .25,
       });
 
+    // Анимация секции Advantages (Преимущества):
+
     const advantagesAnimation = gsap.timeline({
         paused: true,
         reversed: true,
@@ -249,6 +265,8 @@
         stagger: .25,
       });
 
+    // Анимация секции Production (Продукция):
+
     const productionAnimations = gsap.timeline({
         paused: true,
         reversed: true,
@@ -258,6 +276,8 @@
         y: -50,
         opacity: 0,
       });
+
+    // Анимация секции Partners (Партнёры):
 
     const partnersAnimations = gsap.timeline({
         paused: true,
@@ -294,6 +314,8 @@
       pageAnimation();
     });
 
+    // Анимация Pop-Up'ов:
+
     const openPopup = gsap.timeline({
         paused: true,
         reversed: true,
@@ -310,6 +332,8 @@
       }, "-=1");
 
     // GSAP Active Products Animations:
+
+    // На десктопах:
 
     const showProductsDescr = gsap.timeline({
         paused: true,
@@ -397,13 +421,18 @@
         if (!el.classList.contains('production__item-btn--active')) {
           showDescription(el);
         };
-      } else if (mobileDevices.matches) {
-        if (el.classList.contains('production__item-btn--active')) {
-          el.parentNode.classList.remove('production__item--active');
-          el.classList.remove('production__item-btn--active');
-        } else {
+      };
+      if (mobileDevices.matches) {
+        const content = el.parentNode.querySelector('.production__content');
+        const contentHeight = content.scrollHeight + 'px';
+        if (!el.classList.contains('production__item-btn--active')) {
           el.parentNode.classList.add('production__item--active');
           el.classList.add('production__item-btn--active');
+          content.style.maxHeight = contentHeight;
+        } else {
+          el.parentNode.classList.remove('production__item--active');
+          el.classList.remove('production__item-btn--active');
+          content.style.maxHeight = 0;
         };
       };
     }));

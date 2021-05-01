@@ -507,7 +507,7 @@ section {
 
 .hero {
   position: relative;
-  padding: 225px 0;
+  padding: 175px 0;
   overflow: hidden;
 }
 
@@ -517,7 +517,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right, var(--main-color), transparent), url('../img/hero/bg_1920/tim-foster.jpg');
+  background-image: url('../img/hero/bg_1920/tim-foster.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -540,11 +540,22 @@ section {
   z-index: 1;
 }
 
-.hero__title {
-  margin-bottom: 85px;
+.hero__inner {
   max-width: 600px;
+}
+
+.hero__title {
+  margin-bottom: 20px;
   font-size: 70px;
   line-height: 1.4;
+  color: var(--additional-color);
+}
+
+.hero__descr {
+  padding-right: 100px;
+  margin-bottom: 65px;
+  font-size: 22px;
+  font-weight: 500;
   color: var(--additional-color);
 }
 
@@ -615,7 +626,6 @@ section {
   background-size: auto 85%;
   filter: grayscale(1);
   transition: filter .2s ease;
-  cursor: pointer;
 }
 
 .advantages__item-quality {
@@ -652,6 +662,10 @@ section {
 
 @media (min-width: 1025px) {
 
+  .advantages__item {
+    cursor: pointer;
+  }
+
   .advantages__item:hover {
     filter: grayscale(0);
   }
@@ -675,9 +689,21 @@ section {
 }
 
 .production__title {
+  position: relative;
   margin-bottom: 25px;
   text-align: center;
-  text-shadow: 0 5px 20px var(--font-color);
+}
+
+.production__title::after {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background: url('../img/svg/production.svg') no-repeat center/cover;
+  transform: translateX(-50%);
+  animation: spin 15s infinite;
 }
 
 .production__list {
@@ -834,6 +860,7 @@ section {
 .partners__heading {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
   line-height: 1;
 }
 
@@ -991,7 +1018,8 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 400px;
+  flex: 0 2 400px;
+  margin-right: 20px;
 }
 
 .footer__logo {
@@ -1008,9 +1036,13 @@ section {
 }
 
 .contacts__item {
-  margin: 0 25px 25px 0;
+  margin-bottom: 25px;
   width: 65px;
   height: 65px;
+}
+
+.contacts__item:not(:last-child) {
+  margin-right: 25px;
 }
 
 .contacts__link {
@@ -1457,17 +1489,20 @@ section {
   }
 
   .hero {
-    padding: 185px 0;
+    padding: 135px 0;
   }
 
   .hero__bg {
-    background-image: linear-gradient(to right, var(--main-color), transparent), url(../img/hero/bg_1024/tim-foster.jpg);
-    animation: hero__bg-scale 5s linear infinite alternate, hero__bg-change--1024 25s cubic-bezier(.9, .05, .9, .05) infinite alternate;
+    background-image: url(../img/hero/bg_1024/tim-foster.jpg);
+    animation-name: hero__bg-scale, hero__bg-change--1024;
   }
 
   .hero__title {
-    margin-bottom: 55px;
     font-size: 56px;
+  }
+
+  .hero__descr {
+    margin-bottom: 55px;
   }
 
   .advantages__item {
@@ -1476,12 +1511,16 @@ section {
   }
 
   .advantages__item:nth-child(-n + 3) {
-    margin-bottom: 75px;
+    margin-bottom: 95px;
   }
 
   .advantages__subtitle {
     opacity: 1;
     visibility: visible;
+  }
+
+  .production {
+    background-size: auto, 350px auto, 250px auto;
   }
 
   .production__list {
@@ -1490,16 +1529,38 @@ section {
   }
 
   .production__item {
+    position: relative;
     flex-basis: auto;
     margin: 0;
   }
 
+  .production__item::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 5px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 5%, rgba(243, 243, 243, .4) 50%, rgba(255, 255, 255, 0) 95%);
+    ;
+    opacity: 0;
+    transform: translateX(-50%);
+    transition: width .25s ease .35s, opacity .25s ease .35s;
+  }
+
+  .production__item--active::after {
+    width: 250px;
+    opacity: .5;
+  }
+
   .production__item:not(:last-child) {
-    margin-bottom: 25px;
+    margin-bottom: 35px;
   }
 
   .production__item-btn {
     position: relative;
+    display: flex;
+    align-items: center;
     padding: 0;
     width: 100%;
     height: 100px;
@@ -1538,11 +1599,42 @@ section {
   }
 
   .production__icon {
+    position: absolute;
+    top: 0;
+    left: 20%;
     transform: scale(1);
   }
 
-  .production__item--active .production__content {
+  .production__content {
+    position: relative;
     display: block;
+    padding: 0 35px 25px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity .5s ease, max-height .5s ease;
+  }
+
+  .production__item--active .production__content {
+    opacity: 1;
+  }
+
+  .production__content::before,
+  .production__content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(rgba(255, 255, 255, 0) 5%, rgba(243, 243, 243, .4) 55%, rgba(255, 255, 255, 0) 100%);
+  }
+
+  .production__content::before {
+    left: 0;
+  }
+
+  .production__content::after {
+    right: 0;
   }
 
   .production__item--active .production__item-btn::after {
@@ -1551,6 +1643,11 @@ section {
 
   .production__subtitle {
     display: none;
+  }
+
+  .production__image-inner {
+    float: none;
+    margin: 20px auto;
   }
 
   .production__description {
@@ -1566,10 +1663,329 @@ section {
     opacity: 1;
   }
 
+  .footer__logo {
+    flex-direction: column;
+  }
+
+  .footer__logo-icon {
+    margin: 0 0 5px;
+  }
+
+  .footer__logo-text {
+    height: 50px;
+  }
+
+  .contacts__item:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .contacts__link {
+    filter: grayscale(0);
+  }
+
 }
 
-@media (max-width: 768px) {}
+@media (max-width: 768px) {
 
-@media (max-width: 576px) {}
+  .container {
+    padding: 0 25px;
+  }
 
-@media (max-width: 375px) {}
+  .header {
+    height: 70px;
+  }
+
+  .header__logo-icon {
+    height: 50px;
+    width: 50px;
+  }
+
+  .header__logo-text {
+    width: 200px;
+    height: 40px;
+  }
+
+  .hero {
+    padding: 170px 0;
+  }
+
+  .hero__bg {
+    background-image: url(../img/hero/bg_768/tim-foster.jpg);
+    animation-name: hero__bg-scale, hero__bg-change--768;
+  }
+
+  .hero__inner {
+    max-width: 450px;
+  }
+
+  .hero__title {
+    font-size: 46px;
+  }
+
+  .hero__descr {
+    font-size: 18px;
+  }
+
+  .production__item-btn::before {
+    font-size: 22px;
+    width: calc(100% / 2);
+  }
+
+  .production__icon {
+    /* padding-left: 150px; */
+  }
+
+  .footer__inner {
+    flex-direction: column-reverse;
+    margin: 0 auto;
+    max-width: 400px;
+  }
+
+  .footer__contacts {
+    flex-basis: auto;
+    flex-direction: column-reverse;
+    margin-right: 0;
+  }
+
+  .footer__logo {
+    flex-direction: row;
+  }
+
+  .footer__logo-icon {
+    margin: 0 25px 0 0;
+  }
+
+  .footer__logo-text {
+    height: 70px;
+  }
+
+  .footer__contacts-inner {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .contacts__primary {
+    margin-bottom: 15px;
+  }
+
+  .form {
+    flex-basis: auto;
+  }
+
+  .footer__form {
+    margin-bottom: 50px;
+  }
+
+}
+
+@media (max-width: 576px) {
+
+  section {
+    padding: 75px 0;
+  }
+
+  .header__logo-icon {
+    margin-right: 10px;
+  }
+
+  .header__logo-text {
+    width: 165px;
+  }
+
+  .header__phone {
+    right: 60px;
+  }
+
+  .hero {
+    padding: 155px 0;
+  }
+
+  .hero__inner {
+    max-width: 400px;
+  }
+
+  .hero__title {
+    font-size: 38px;
+  }
+
+  .hero__descr {
+    padding-right: 0;
+  }
+
+  .advantages__list {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .advantages__item {
+    flex-basis: auto;
+    width: 100%;
+    background-position: center left;
+  }
+
+  .advantages__item:not(:last-child) {
+    margin-bottom: 25px;
+  }
+
+  .advantages__subtitle {
+    display: block;
+    left: 120px;
+    top: 50%;
+    width: auto;
+    text-align: left;
+    transform: translateY(-50%);
+  }
+
+  .production {
+    background-size: auto, 300px auto, 250px auto;
+  }
+
+  .production__item-btn::before {
+    font-size: 20px;
+    width: calc((100% - 50px) / 2);
+  }
+
+  .production__icon {
+    top: 10px;
+    width: 85%;
+    height: 85%;
+  }
+
+  .production__content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .production__image-inner {
+    width: 280px;
+    height: 160px;
+  }
+
+  .partners__heading {
+    flex-direction: column;
+  }
+
+  .partners__buttons {
+    justify-content: flex-end;
+  }
+
+  .footer__logo-icon {
+    margin: 0 15px 0 0;
+  }
+
+  .footer__logo-text {
+    width: 350px;
+  }
+
+  .contacts__list {
+    justify-content: center;
+    max-width: 200px;
+  }
+
+  .contacts__item {
+    margin: 0 10px 25px;
+  }
+
+  .contacts__item:not(:nth-child(2n)) {
+    margin-right: 25px;
+  }
+
+}
+
+@media (max-width: 375px) {
+
+  body {
+    font-size: 14px;
+  }
+
+  section {
+    padding: 35px 0;
+  }
+
+  .section-title {
+    font-size: 28px;
+    line-height: 1.6;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .hero {
+    padding: 25px 0;
+  }
+
+  .hero__bg {
+    position: absolute;
+    background-image: url(../img/hero/bg_375/tim-foster.jpg);
+    animation-name: hero__bg-scale, hero__bg-change--375;
+  }
+
+  .hero__inner {
+    text-align: center;
+  }
+
+  .hero__title {
+    margin-bottom: 15px;
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .hero__descr {
+    margin-bottom: 25px;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .hero__link {
+    padding: 7px 15px;
+    font-size: 16px;
+  }
+
+  .advantages__item {
+    height: 85px;
+  }
+
+  .advantages__subtitle {
+    left: 100px;
+  }
+
+  .production {
+    background-size: auto, 225px auto, 200px auto;
+  }
+
+  .production__item:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .production__title::after {
+    top: -50%;
+    left: 65%;
+  }
+
+  .production__item-btn::before {
+    font-size: 16px;
+  }
+
+  .production__image-inner {
+    width: 240px;
+    height: 140px;
+  }
+
+  .footer__logo {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer__logo-icon {
+    margin: 0;
+  }
+
+  .footer__logo-text {
+    margin-left: 20px;
+    width: 280px;
+  }
+
+}

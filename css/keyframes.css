@@ -1,5 +1,35 @@
 /* Keyframes */
 
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+
+  to {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes hero__bg-scale {
   0% {
     transform: scale(1);
@@ -45,5 +75,39 @@
 
   60% {
     background-image: url('../img/hero/bg_1024/barrier.jpg');
+  }
+}
+
+@keyframes hero__bg-change--768 {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/hero/bg_768/tim-foster.jpg');
+  }
+
+  30% {
+    background-image: url('../img/hero/bg_768/train.jpg');
+  }
+
+  60% {
+    background-image: url('../img/hero/bg_768/barrier.jpg');
+  }
+}
+
+@keyframes hero__bg-change--375 {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/hero/bg_375/tim-foster.jpg');
+  }
+
+  30% {
+    background-image: url('../img/hero/bg_375/train.jpg');
+  }
+
+  60% {
+    background-image: url('../img/hero/bg_375/barrier.jpg');
   }
 }

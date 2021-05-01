@@ -20,7 +20,7 @@
           slidesPerGroup: 1,
           direction: 'horizontal',
           speed: 1000,
-          loop: true,
+          // loop: true,
           spaceBetween: 50,
           simulateTouch: false,
           touchRatio: 2,
@@ -88,26 +88,6 @@
 
     partnersSliderReload(desktopRes);
     desktopRes.addListener(partnersSliderReload);
-
-    /* Добавляем возможность листать слайды свайпами на мобильных устройствах: */
-
-    const allSliders = document.querySelectorAll('.swiper-container');
-
-    function slidersSwiping() {
-      if (window.innerWidth > 1024) {
-        [...allSliders].forEach(function (item) {
-          item.classList.add('swiper-no-swiping');
-        });
-      } else {
-        [...allSliders].forEach(function (item) {
-          item.classList.remove('swiper-no-swiping');
-        });
-      }
-    };
-
-    // slidersSwiping();
-
-    // window.addEventListener('resize', slidersSwiping);
 
   });
 
