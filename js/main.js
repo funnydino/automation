@@ -5,16 +5,18 @@
   document.addEventListener('DOMContentLoaded', () => {
 
     const $body = document.querySelector('.body');
+    const $fixBlocks = document.querySelectorAll('.fix-block');
+    const $mobileMenu = document.querySelector('.mobile-menu');
+    const $toTopBtn = document.querySelector('.page__to-top');
+    const $header = document.querySelector('.header');
+    const $burger = document.querySelector('.burger');
+    const $navMenu = document.querySelector('.header__nav');
     const $heroSection = document.querySelector('.hero');
     const $aboutSection = document.querySelector('.about');
     const $advantagesSection = document.querySelector('.advantages');
     const $productionSection = document.querySelector('.production');
     const $partnersSection = document.querySelector('.partners');
     const $overlay = document.querySelector('.overlay');
-    const $burger = document.querySelector('.burger');
-    const $navMenu = document.querySelector('.header__nav');
-    const $mobileMenu = document.querySelector('.mobile-menu');
-    const $fixBlocks = document.querySelectorAll('.fix-block');
     const $productionItems = document.querySelectorAll('.production__item');
     const $productsButtons = document.querySelectorAll('.production__item-btn');
     const $productsDescrContainer = document.querySelector('.production__description');
@@ -34,6 +36,48 @@
       mobileMenu();
 
     };
+
+    // Функция для 'Fixed Header' и 'To-Top Link':
+
+    let previousScroll = window.pageYOffset;
+
+    const hideHeader = () => {
+      $header.classList.remove('header--fixed');
+      $header.classList.add('header--hidden');
+    };
+
+    const showHeader = () => {
+      $header.classList.remove('header--hidden');
+      $header.classList.add('header--fixed');
+    };
+
+    const fixedHeader = () => {
+
+      let currentScroll = window.pageYOffset;
+
+      if (window.pageYOffset >= $header.offsetHeight && window.pageYOffset < $heroSection.offsetHeight) {
+        $header.classList.add('header--hidden');
+      } else if (window.pageYOffset >= $heroSection.offsetHeight) {
+        $toTopBtn.classList.add('page__to-top--visible');
+        if (!mobileDevices.matches) {
+          hideHeader();
+        } else {
+          if (previousScroll < currentScroll) {
+            hideHeader();
+          } else {
+            showHeader();
+          };
+          previousScroll = currentScroll;
+        };
+      } else {
+        $header.classList.remove('header--hidden');
+        $header.classList.remove('header--fixed');
+        $toTopBtn.classList.remove('page__to-top--visible');
+      };
+
+    };
+
+    fixedHeader();
 
     const mobileMenu = () => {
       if (mobileDevices.matches) {
@@ -61,6 +105,7 @@
     const menuOpen = () => {
       disableScroll();
       $body.classList.add('body--lock');
+      $mobileMenu.style.paddingTop = $header.offsetHeight + 'px';
       openMenu.play();
     };
 
@@ -278,6 +323,7 @@
 
     window.addEventListener('scroll', () => {
       pageAnimation();
+      fixedHeader();
     });
 
     // Анимация Pop-Up'ов:

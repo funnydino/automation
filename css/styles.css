@@ -177,7 +177,7 @@ section {
   width: 100%;
   height: 100%;
   display: none;
-  z-index: 1;
+  z-index: 9;
 }
 
 .mobile-menu--visible {
@@ -250,6 +250,20 @@ section {
   color: var(--additional-color);
   background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center;
   background-size: unset;
+  transform-origin: top;
+  transition: transform .25s ease;
+  z-index: 10;
+}
+
+.header--fixed {
+  position: fixed;
+  visibility: visible;
+  transform: scaleY(1);
+}
+
+.header--hidden {
+  visibility: hidden;
+  transform: scaleY(0);
 }
 
 .header__container {
@@ -367,7 +381,6 @@ section {
   font-weight: 500;
   text-decoration: none;
   transition: color .2s ease;
-  z-index: 1;
 }
 
 .header__phone::after {
@@ -440,7 +453,6 @@ section {
   display: none;
   width: 35px;
   height: 30px;
-  z-index: 12;
 }
 
 .header__burger-center-line,
@@ -726,10 +738,6 @@ section {
   margin: 0 10px;
 }
 
-.production__item--active {
-  z-index: 2;
-}
-
 .production__item-btn {
   position: relative;
   padding: 0 15px;
@@ -943,6 +951,11 @@ section {
 
 .partners__buttons {
   display: flex;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  z-index: 1;
 }
 
 .partners__swiper-button-prev,
@@ -1450,6 +1463,51 @@ section {
   text-align: center;
 }
 
+/* To Top Link */
+
+.page__to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  opacity: 0;
+  visibility: hidden;
+  filter: grayscale(1);
+  transition: opacity .35s ease, visibility .35s ease, filter .2s ease, transform .35s ease;
+  z-index: 1;
+}
+
+.page__to-top--visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.arrow-to-top {
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-width: 1025px) {
+
+  .page__to-top:hover {
+    filter: grayscale(0);
+  }
+
+}
+
+.page__to-top:active {
+  filter: grayscale(0);
+  transform: scale(.9);
+}
+
+.page__to-top.focus-visible {
+  filter: grayscale(0);
+  transform: scale(.9);
+}
+
 /* Media Queries */
 
 @media (max-width: 1366px) {
@@ -1693,6 +1751,10 @@ section {
     filter: grayscale(0);
   }
 
+  .page__to-top {
+    filter: grayscale(0);
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -1902,6 +1964,10 @@ section {
     margin-right: 25px;
   }
 
+  .popup-email {
+    width: 300px;
+  }
+
 }
 
 @media (max-width: 375px) {
@@ -1995,6 +2061,10 @@ section {
 
   .footer__logo-text {
     margin-left: 20px;
+    width: 280px;
+  }
+
+  .popup-email {
     width: 280px;
   }
 
