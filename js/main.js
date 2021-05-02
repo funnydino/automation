@@ -54,7 +54,6 @@
       if ($burger.classList.contains('header__burger--close')) {
         menuOpen();
       } else {
-        burgerRotate.restart();
         menuClose();
       };
     });
@@ -124,16 +123,6 @@
 
     // Анимация меню:
 
-    let burgerRotate = gsap.timeline({
-      paused: true,
-      reversed: true,
-    }).to($burger, .5, {
-      rotation: 360,
-    });
-
-    const burgerRule1 = CSSRulePlugin.getRule(".header__burger:before"),
-      burgerRule2 = CSSRulePlugin.getRule(".header__burger:after");
-
     const openMenu = gsap.timeline({
         paused: true,
         reversed: true,
@@ -141,30 +130,7 @@
       .set($mobileMenu, {
         top: 0,
       })
-      .fromTo('.header__burger-center-line', {
-        opacity: 1,
-      }, {
-        duration: .25,
-        opacity: 0,
-      })
-      .to(burgerRule1, {
-        duration: .25,
-        top: "50%",
-      })
-      .to(burgerRule2, {
-        duration: .25,
-        bottom: "50%",
-      }, "-=.25")
-      .to(burgerRule1, {
-        duration: .35,
-        transform: 'rotate(45deg) translateY(-50%)',
-      })
-      .to(burgerRule2, {
-        duration: .35,
-        bottom: "50%",
-        transform: 'rotate(-45deg) translateY(50%)',
-      }, "-=.35")
-      .fromTo('.menu__list', {
+      .fromTo('.menu-list', {
         x: "-100vw",
         opacity: 0,
       }, {
@@ -172,7 +138,7 @@
         x: 0,
         width: "100%",
         opacity: 1,
-      }, "-=.7")
+      })
       .from('.menu__link span', {
         duration: 1,
         y: 25,

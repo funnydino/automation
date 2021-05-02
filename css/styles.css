@@ -184,7 +184,7 @@ section {
   display: block;
 }
 
-.menu__list {
+.menu-list {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -241,6 +241,10 @@ section {
 /* Header */
 
 .header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100px;
   border-bottom: 2px solid var(--border-color);
   color: var(--additional-color);
@@ -458,13 +462,15 @@ section {
 
 .header__burger::before {
   top: 0;
+  transition: top 300ms 300ms, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .header__burger::after {
   bottom: 0;
+  transition: bottom 300ms 300ms, transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-/* .header__burger--close .header__burger-center-line {
+.header__burger--close .header__burger-center-line {
   opacity: 0;
   visibility: hidden;
 }
@@ -472,12 +478,14 @@ section {
 .header__burger--close::before {
   top: 50%;
   transform: rotate(45deg) translateY(-50%);
+  transition: top 300ms, transform 300ms 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .header__burger--close::after {
   bottom: 50%;
   transform: rotate(-45deg) translateY(50%);
-} */
+  transition: bottom 300ms, transform 300ms 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
 @media (min-width: 1025px) {
 
@@ -507,7 +515,7 @@ section {
 
 .hero {
   position: relative;
-  padding: 175px 0;
+  padding: 275px 0 175px;
   overflow: hidden;
 }
 
@@ -879,11 +887,13 @@ section {
   transition: filter .2s ease, transform .2s ease, opacity .2s ease;
 }
 
-.partners__link img {
+.partners__logo {
   margin: 0 auto;
+  width: 100%;
+  height: 100%;
 }
 
-.partners__logo--faac {
+.partners__logo-faac {
   display: flex;
   align-items: center;
   width: 100%;
@@ -898,7 +908,7 @@ section {
     opacity: 1;
   }
 
-  .partners__link--faac:hover .partners__logo--faac {
+  .partners__link--faac:hover .partners__logo-faac {
     fill: var(--secondary-color);
   }
 
@@ -917,11 +927,11 @@ section {
   transform: scale(1.05);
 }
 
-.partners__link--faac:active .partners__logo--faac {
+.partners__link--faac:active .partners__logo-faac {
   fill: var(--secondary-color);
 }
 
-.partners__link.focus-visible .partners__logo--faac {
+.partners__link.focus-visible .partners__logo-faac {
   fill: var(--secondary-color);
 }
 
@@ -1465,7 +1475,7 @@ section {
   }
 
   .hero {
-    padding: 150px 0;
+    padding: 250px 0 150px;
   }
 
   .production {
@@ -1489,7 +1499,7 @@ section {
   }
 
   .hero {
-    padding: 135px 0;
+    padding: 235px 0 135px;
   }
 
   .hero__bg {
@@ -1706,7 +1716,7 @@ section {
   }
 
   .hero {
-    padding: 170px 0;
+    padding: 240px 0 170px;
   }
 
   .hero__bg {
@@ -1799,7 +1809,7 @@ section {
   }
 
   .hero {
-    padding: 155px 0;
+    padding: 225px 0 155px;
   }
 
   .hero__inner {
@@ -1914,7 +1924,7 @@ section {
   }
 
   .hero {
-    padding: 25px 0;
+    padding: 95px 0 25px;
   }
 
   .hero__bg {

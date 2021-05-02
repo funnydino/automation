@@ -16,7 +16,6 @@
   <link rel="stylesheet" href="./css/fonts.css">
   <link rel="stylesheet" href="./css/keyframes.css">
   <link rel="stylesheet" href="./css/styles.css">
-  <script defer src="./js/CSSRulePlugin.min.js"></script>
   <script defer src="./js/swiper-bundle.min.js"></script>
   <script defer src="./js/focus-visible.min.js"></script>
   <script defer src="./js/swiper.js"></script>
@@ -31,7 +30,7 @@
   <!-- Mobile Menu -->
 
   <div class="mobile-menu fix-block">
-    <ul class="menu menu__list">
+    <ul class="menu menu-list">
       <li class="menu__item">
         <a class="menu__link" href="#about" data-scroll="#about">
           <span>О себе</span>
@@ -52,14 +51,14 @@
 
   <!-- Header -->
 
-  <header class="header">
+  <header class="header fix-block">
     <!-- <div class="header__inner"> -->
     <div class="container header__container">
       <div class="header__inner">
         <svg class="logo-icon header__logo-icon">
           <use xlink:href="./img/svg/sprite.svg#logo"></use>
         </svg>
-        <svg class="logo-text header__logo-text" xmlns="//www.w3.org/2000/svg" viewbox="0 0 250 50">
+        <svg class="logo-text header__logo-text" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 250 50">
           <text x="0" y="20" font-weight="bold">ИП</text>
           <text x="0" y="50" font-size="22px" fill="#f9dd79">Семенюк А. И.</text>
         </svg>
@@ -142,7 +141,7 @@
             </p>
           </div>
         </div>
-      </section>
+      </section> <!-- /.about -->
 
       <!-- Advantages Section -->
 
@@ -179,7 +178,7 @@
             </ul>
           </div>
         </div>
-      </section>
+      </section> <!-- /.advantages -->
 
       <!-- Production Section -->
 
@@ -362,12 +361,12 @@
             <h2 class="section-title partners__title">Партнёры</h2>
             <div class="partners__buttons">
               <div class="swiper-button-prev partners__swiper-button-prev">
-                <svg class="swiper-button-icon swiper-button-icon__prev">
+                <svg class="swiper-button-icon">
                   <use xlink:href="./img/svg/sprite.svg#prev"></use>
                 </svg>
               </div>
               <div class="swiper-button-next partners__swiper-button-next">
-                <svg class="swiper-button-icon swiper-button-icon__next">
+                <svg class="swiper-button-icon">
                   <use xlink:href="./img/svg/sprite.svg#next"></use>
                 </svg>
               </div>
@@ -378,19 +377,19 @@
               <li class="partners__item swiper-slide">
                 <a class="partners__link partners__link--nice" href="https://niceforyou.ru/" target="_blank"
                   aria-label="Сайт компании Nice">
-                  <img src="./img/logos/nice_2.png" alt="Логотип компании Nice">
+                  <img class="partners__logo" src="./img/logos/nice_2.png" alt="Логотип компании Nice">
                 </a>
               </li>
               <li class="partners__item swiper-slide">
                 <a class="partners__link partners__link--ipr" href="https://www.iprrus.ru/index.html" target="_blank"
                   aria-label="Сайт компании IPR">
-                  <img src="./img/logos/ipr.png" alt="Логотип компании IPR">
+                  <img class="partners__logo" src="./img/logos/ipr.png" alt="Логотип компании IPR">
                 </a>
               </li>
               <li class="partners__item swiper-slide">
                 <a class="partners__link partners__link--faac" href="https://faac.ru/" target="_blank"
                   aria-label="Сайт компании FAAC">
-                  <svg class="partners__logo--faac">
+                  <svg class="partners__logo-faac">
                     <use xlink:href="./img/svg/sprite.svg#faac-logo"></use>
                   </svg>
                 </a>
@@ -398,13 +397,13 @@
               <li class="partners__item swiper-slide">
                 <a class="partners__link partners__link--dynaco" href="https://dynaco.ru/" target="_blank"
                   aria-label="Сайт компании Dynaco">
-                  <img src="./img/logos/dynaco.png" alt="Логотип компании Dynaco">
+                  <img class="partners__logo" src="./img/logos/dynaco.png" alt="Логотип компании Dynaco">
                 </a>
               </li>
               <li class="partners__item swiper-slide">
                 <a class="partners__link partners__link--beninca" href="https://www.beninca.com/en/" target="_blank"
                   aria-label="Сайт компании Beninca">
-                  <img src="./img/logos/beninca.png" alt="Логотип компании Beninca">
+                  <img class="partners__logo" src="./img/logos/beninca.png" alt="Логотип компании Beninca">
                 </a>
               </li>
             </ul>
@@ -424,7 +423,7 @@
               <svg class="logo-icon footer__logo-icon">
                 <use xlink:href="./img/svg/sprite.svg#logo"></use>
               </svg>
-              <svg class="logo-text footer__logo-text" xmlns="//www.w3.org/2000/svg" viewbox="0 0 400 50">
+              <svg class="logo-text footer__logo-text" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 400 50">
                 <text x="0" y="20" font-weight="bold">Индивидуальный Предприниматель</text>
                 <text x="0" y="50" font-size="22px" fill="#f9dd79">Семенюк Александр Иванович</text>
               </svg>
@@ -433,11 +432,11 @@
               <div class="contacts__primary">
                 <ul class="contacts__list">
                   <li class="contacts__item">
-                    <a class="contacts__link contacts__link--tel" href="tel:+79114777066" targer="_blank"
+                    <a class="contacts__link contacts__link--tel" href="tel:+79114777066"
                       aria-label="Позвонить по телефону: +7-911-477-70-66"></a>
                   </li>
                   <li class="contacts__item">
-                    <a class="contacts__link contacts__link--mail" href="mailto:funnydino1@gmail.com" targer="_blank"
+                    <a class="contacts__link contacts__link--mail" href="mailto:funnydino1@gmail.com"
                       aria-label="Отправить электронное письмо"></a>
                   </li>
                 </ul>
@@ -445,18 +444,18 @@
               <div class="contacts__social">
                 <ul class="contacts__list">
                   <li class="contacts__item">
-                    <a class="contacts__link contacts__link--telegram" href="#" targer="_blank"
+                    <a class="contacts__link contacts__link--telegram" href="#" target="_blank"
                       aria-label="Telegram"></a>
                   </li>
                   <li class="contacts__item">
-                    <a class="contacts__link contacts__link--whatsapp" href="#" targer="_blank"
+                    <a class="contacts__link contacts__link--whatsapp" href="#" target="_blank"
                       aria-label="WhatsApp"></a>
                   </li>
                   <li class="contacts__item">
-                    <a class="contacts__link contacts__link--vk" href="#" targer="_blank" aria-label="ВКонтакте"></a>
+                    <a class="contacts__link contacts__link--vk" href="#" target="_blank" aria-label="ВКонтакте"></a>
                   </li>
                   <li class="contacts__item">
-                    <a class="contacts__link contacts__link--instagram" href="#" targer="_blank"
+                    <a class="contacts__link contacts__link--instagram" href="#" target="_blank"
                       aria-label="Instagram"></a>
                   </li>
                 </ul>
