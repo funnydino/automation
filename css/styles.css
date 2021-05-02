@@ -194,9 +194,6 @@ section {
 
 .menu__item {
   flex: 1;
-}
-
-.menu__item:not(:last-child) {
   border-bottom: 2px solid var(--border-color);
 }
 
