@@ -35,7 +35,7 @@
               slidesPerView: 4,
             },
             1367: {
-              slidesPerView: 5,
+              slidesPerView: 6,
             }
           },
           navigation: {
@@ -68,8 +68,8 @@
         partnersSlider.dataset.loaded = 'false';
         SliderPartners();
         document.querySelector('.partners__swiper-container').style.overflow = 'visible';
-        document.querySelectorAll('.partners__item').forEach((el) => el.style.flex = '0 1 15%');
-        document.querySelectorAll('.partners__link').forEach((el) => el.setAttribute('tabindex', '0'));
+        document.querySelectorAll('.partners__item').forEach((el) => el.style.flex = '0 1 13%');
+        // document.querySelectorAll('.partners__link').forEach((el) => el.setAttribute('tabindex', '0'));
         document.querySelector('.partners__swiper-button-prev').style.display = 'none';
         document.querySelector('.partners__swiper-button-next').style.display = 'none';
         console.log('Publications slider disabled!');
@@ -79,7 +79,7 @@
         SliderPartners();
         document.querySelector('.partners__swiper-container').style.overflow = 'hidden';
         document.querySelectorAll('.partners__item').forEach((el) => el.style.flex = 'none');
-        document.querySelectorAll('.partners__link').forEach((el) => el.setAttribute('tabindex', '-1'));
+        // document.querySelectorAll('.partners__link').forEach((el) => el.setAttribute('tabindex', '-1'));
         document.querySelector('.partners__swiper-button-prev').style.display = 'block';
         document.querySelector('.partners__swiper-button-next').style.display = 'block';
         console.log('Publications slider enabled!');

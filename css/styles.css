@@ -194,6 +194,9 @@ section {
 
 .menu__item {
   flex: 1;
+}
+
+.menu__item:not(:last-child) {
   border-bottom: 2px solid var(--border-color);
 }
 
@@ -619,6 +622,10 @@ section {
   max-width: 1080px;
 }
 
+.about__text span {
+  color: var(--hover-color);
+}
+
 /* Advantages Section */
 
 .advantages {
@@ -906,6 +913,13 @@ section {
   transition: fill .2s ease;
 }
 
+.partners__logo-came {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
 @media (min-width: 1025px) {
 
   .partners__link:hover {
@@ -1044,10 +1058,25 @@ section {
 
 .footer__logo {
   display: flex;
+  margin-bottom: 25px;
 }
 
 .footer__logo-text {
   width: 300px;
+}
+
+.footer__legal {
+  margin-bottom: auto;
+}
+
+.footer__legal-text {
+  font-weight: 500;
+  color: var(--hover-color);
+}
+
+.footer__legal-text span {
+  font-weight: 700;
+  color: var(--additional-color);
 }
 
 .contacts__list {
@@ -1812,11 +1841,12 @@ section {
 
   .footer__contacts {
     flex-basis: auto;
-    flex-direction: column-reverse;
+    /* flex-direction: column-reverse; */
     margin-right: 0;
   }
 
   .footer__logo {
+    order: 2;
     flex-direction: row;
   }
 
@@ -1828,7 +1858,13 @@ section {
     height: 70px;
   }
 
+  .footer__legal {
+    order: 3;
+    text-align: center;
+  }
+
   .footer__contacts-inner {
+    order: 1;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
