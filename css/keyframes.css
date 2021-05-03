@@ -111,3 +111,84 @@
     background-image: url('../img/hero/bg_375/barrier.jpg');
   }
 }
+
+@keyframes barriers-change {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/production/barrier/barrier.jpg');
+  }
+
+  30% {
+    background-image: url('../img/production/barrier/barrier2.jpg');
+  }
+
+  60% {
+    background-image: url('../img/production/barrier/barrier3.jpg');
+  }
+}
+
+@keyframes garage__gates-change {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/production/garage/garage.jpg');
+  }
+
+  45% {
+    background-image: url('../img/production/garage/garage2.jpg');
+  }
+}
+
+@keyframes speed__gates-change {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/production/high-speed/speed-1.jpg');
+  }
+
+  25% {
+    background-image: url('../img/production/high-speed/speed-2.jpg');
+  }
+
+  50% {
+    background-image: url('../img/production/high-speed/speed-3.jpg');
+  }
+
+  75% {
+    background-image: url('../img/production/high-speed/speed-4.jpg');
+  }
+}
+
+@keyframes sliding__gates-change {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/production/sliding/sliding.jpg');
+  }
+
+  30% {
+    background-image: url('../img/production/sliding/sliding2.jpg');
+  }
+
+  60% {
+    background-image: url('../img/production/sliding/sliding3.jpg');
+  }
+}
+
+@keyframes swing__gates-change {
+
+  0%,
+  90%,
+  100% {
+    background-image: url('../img/production/swing/swing.jpg');
+  }
+
+  45% {
+    background-image: url('../img/production/swing/swing2.jpg');
+  }
+}
