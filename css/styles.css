@@ -1883,6 +1883,7 @@ section {
   }
 
   .hero__descr {
+    padding-right: 50px;
     font-size: 18px;
   }
 
