@@ -42,7 +42,7 @@
     let previousScroll = window.pageYOffset;
 
     const hideHeader = () => {
-      $header.classList.remove('header--fixed');
+      // $header.classList.remove('header--fixed');
       $header.classList.add('header--hidden');
     };
 
@@ -60,7 +60,7 @@
       } else if (window.pageYOffset >= $heroSection.offsetHeight) {
         $toTopBtn.classList.add('page__to-top--visible');
         if (!mobileDevices.matches) {
-          hideHeader();
+          showHeader();
         } else {
           if (previousScroll < currentScroll) {
             hideHeader();
@@ -106,15 +106,15 @@
       disableScroll();
       $body.classList.add('body--lock');
       $mobileMenu.style.paddingTop = $header.offsetHeight + 'px';
-      openMenu.play();
+      openMenu.timeScale(1).play();
     };
 
     const menuClose = () => {
-      openMenu.reverse();
+      openMenu.timeScale(1.5).reverse();
       setTimeout(() => {
         $body.classList.remove('body--lock');
         enableScroll();
-      }, openMenu.duration() * 1000);
+      }, openMenu.duration() * 750);
     };
 
     // Плавная прокрутка страницы:
@@ -138,7 +138,7 @@
           menuClose();
           setTimeout(() => {
             smoothScroll(document.getElementById(id));
-          }, openMenu.duration() * 1000);
+          }, openMenu.duration() * 750);
         } else {
           smoothScroll(document.getElementById(id));
         };

@@ -250,20 +250,19 @@ section {
   color: var(--additional-color);
   background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center;
   background-size: unset;
+  transform: scaleY(1);
   transform-origin: top;
-  transition: transform .25s ease;
+  transition: transform .35s ease;
   z-index: 10;
 }
 
 .header--fixed {
   position: fixed;
-  visibility: visible;
-  transform: scaleY(1);
+  transform: translateY(0);
 }
 
 .header--hidden {
-  visibility: hidden;
-  transform: scaleY(0);
+  transform: translateY(-100%);
 }
 
 .header__container {
@@ -882,8 +881,9 @@ section {
   float: right;
   margin: 20px 0 15px 25px;
   width: 350px;
-  height: 200px;
+  height: 180px;
   border-radius: 15px;
+  box-shadow: 0 0 20px var(--additional-color);
   overflow: hidden;
 }
 
@@ -919,6 +919,10 @@ section {
 .production__image-high-speed-gates {
   background-image: url('../img/production/high-speed/speed-1.jpg');
   animation: hero__bg-scale 5s linear infinite alternate, speed__gates-change 35s cubic-bezier(.9, .05, .9, .05) infinite alternate;
+}
+
+.production__text:not(:last-child) {
+  margin-bottom: 10px;
 }
 
 .production__description {
@@ -2009,6 +2013,11 @@ section {
     width: calc((100% - 50px) / 2);
   }
 
+  .production__item-btn::after {
+    width: 45px;
+    height: 45px;
+  }
+
   .production__icon {
     top: 10px;
     width: 85%;
@@ -2133,6 +2142,11 @@ section {
 
   .production__item-btn::before {
     font-size: 16px;
+  }
+
+  .production__item-btn::after {
+    width: 40px;
+    height: 40px;
   }
 
   .production__image-inner {
