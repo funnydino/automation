@@ -621,7 +621,8 @@ section {
   max-width: 1080px;
 }
 
-.about__text span {
+.about__text strong {
+  font-weight: 500;
   color: var(--hover-color);
 }
 
@@ -882,6 +883,8 @@ section {
   margin: 20px 0 15px 25px;
   width: 350px;
   height: 180px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
   border-radius: 15px;
   box-shadow: 0 0 20px var(--additional-color);
   overflow: hidden;
