@@ -622,7 +622,7 @@ section {
 }
 
 .about__text strong {
-  font-weight: 500;
+  font-weight: 400;
   color: var(--hover-color);
 }
 
@@ -1895,9 +1895,9 @@ section {
     width: calc(100% / 2);
   }
 
-  .production__icon {
-    /* padding-left: 150px; */
-  }
+  /* .production__icon {
+    padding-left: 150px;
+  } */
 
   .footer__inner {
     flex-direction: column-reverse;
