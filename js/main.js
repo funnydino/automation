@@ -324,6 +324,8 @@
     window.addEventListener('scroll', () => {
       pageAnimation();
       fixedHeader();
+    }, {
+      passive: true
     });
 
     // Анимация Pop-Up'ов:
