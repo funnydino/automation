@@ -886,8 +886,9 @@ section {
   border-radius: 15px;
   box-shadow: 0 0 20px var(--additional-color);
   overflow: hidden;
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  mask-image: -webkit-radial-gradient(white, black);
+  /* -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: -webkit-radial-gradient(white, black); */
+  will-change: transform;
 }
 
 .production__image {
