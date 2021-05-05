@@ -1634,6 +1634,10 @@ section {
 
 @media (max-width: 1024px) {
 
+  .menu__link span::after {
+    bottom: 3px;
+  }
+
   .header__nav--hidden {
     display: none;
   }
