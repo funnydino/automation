@@ -126,7 +126,11 @@ body {
   font-size: 16px;
   line-height: 2;
   color: var(--font-color);
-  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center/contain;
+  background-color: var(--main-color);
+  background-image: url('../img/svg/bg/pattern-lines-hero.svg');
+  background-repeat: repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .body--lock {
@@ -209,7 +213,10 @@ section {
   font-size: 22px;
   color: var(--additional-color);
   text-decoration: none;
-  background: var(--main-color) url('../img/svg/bg/pattern-dots.svg') repeat center;
+  background-color: var(--main-color);
+  background-image: url('../img/svg/bg/pattern-dots.svg');
+  background-repeat: repeat;
+  background-position: center;
   transition: color .5s ease;
 }
 
@@ -248,7 +255,10 @@ section {
   height: 100px;
   border-bottom: 2px solid var(--border-color);
   color: var(--additional-color);
-  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center;
+  background-color: var(--main-color);
+  background-image: url('../img/svg/bg/pattern-lines-hero.svg');
+  background-repeat: repeat;
+  background-position: center;
   background-size: unset;
   transform: scaleY(1);
   transform-origin: top;
@@ -536,6 +546,7 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: var(--main-color);
   background-image: url('../img/hero/bg_1920/tim-foster.jpg');
   background-repeat: no-repeat;
   background-position: center;
@@ -610,7 +621,11 @@ section {
 .about {
   border-top: 2px solid var(--border-color);
   border-bottom: 2px solid var(--border-color);
-  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center/contain;
+  background-color: var(--main-color);
+  background-image: url('../img/svg/bg/pattern-lines-hero.svg');
+  background-repeat: repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .about__container {
@@ -675,7 +690,10 @@ section {
 /* Advantages Section */
 
 .advantages {
-  background: var(--main-color) url('../img/svg/bg/pattern-dots.svg') repeat center;
+  background-color: var(--main-color);
+  background-image: url('../img/svg/bg/pattern-dots.svg');
+  background-repeat: repeat;
+  background-position: center;
   color: var(--hover-color);
 }
 
@@ -938,7 +956,10 @@ section {
 /* Partners Section */
 
 .partners {
-  background: var(--additional-color) url('../img/svg/bg/pattern-dots_dark.svg') repeat center;
+  background-color: var(--additional-color);
+  background-image: url('../img/svg/bg/pattern-dots_dark.svg');
+  background-repeat: repeat;
+  background-position: center;
 }
 
 .partners__heading {
@@ -1104,7 +1125,10 @@ section {
   padding: 70px 0;
   border-top: 2px solid var(--border-color);
   color: var(--additional-color);
-  background: var(--main-color) url('../img/svg/bg/pattern-lines-hero.svg') repeat center;
+  background-color: var(--main-color);
+  background-image: url('../img/svg/bg/pattern-lines-hero.svg');
+  background-repeat: repeat;
+  background-position: center;
 }
 
 .footer__inner {
@@ -1224,7 +1248,11 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(34, 34, 34, .5) url('../img/loading.gif') center / 75px no-repeat;
+  background-color: rgba(34, 34, 34, .5);
+  background-image: url('../img/loading.gif');
+  background-position: center;
+  background-size: 75px;
+  background-repeat: no-repeat;
   opacity: 0;
   visibility: hidden;
   transition: opacity .35s ease, visibility .35s ease;
@@ -1395,7 +1423,9 @@ section {
   padding: 25px 0;
   border-top: 2px solid var(--border-color);
   color: var(--additional-color);
-  background: var(--font-color) url('../img/svg/bg/pattern-dots.svg') repeat;
+  background-color: var(--font-color);
+  background-image: url('../img/svg/bg/pattern-dots.svg');
+  background-repeat: repeat;
 }
 
 .copyright__info {
