@@ -636,6 +636,10 @@ section {
   max-width: 1080px;
 }
 
+.about__text:not(:last-child) {
+  margin-bottom: 10px;
+}
+
 .about__text strong {
   font-weight: 400;
   color: var(--hover-color);
