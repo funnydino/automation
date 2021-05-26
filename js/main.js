@@ -14,13 +14,9 @@
     const $heroSection = document.querySelector('.hero');
     const $aboutSection = document.querySelector('.about');
     const $advantagesSection = document.querySelector('.advantages');
-    const $productionSection = document.querySelector('.production');
+    const $servicesSection = document.querySelector('.services');
     const $partnersSection = document.querySelector('.partners');
     const $overlay = document.querySelector('.overlay');
-    const $productionItems = document.querySelectorAll('.production__item');
-    const $productsButtons = document.querySelectorAll('.production__item-btn');
-    const $productsDescrContainer = document.querySelector('.production__description');
-    const $productsDescrInner = document.querySelector('.production__description-inner');
 
     const mobileDevices = window.matchMedia("(max-width: 1024px)");
     const desktopDevices = window.matchMedia("(min-width: 1367px)");
@@ -276,16 +272,22 @@
         stagger: .25,
       });
 
-    // Анимация секции Production (Продукция):
+    // Анимация секции Services (Услуги):
 
-    const productionAnimations = gsap.timeline({
+    const servicesAnimations = gsap.timeline({
         paused: true,
         reversed: true,
       })
-      .from('.production__title', {
+      .from('.services__title', {
         duration: 1,
         y: -50,
         opacity: 0,
+      })
+      .from('.services__text', {
+        duration: .75,
+        y: 35,
+        opacity: 0,
+        stagger: .25,
       });
 
     // Анимация секции Partners (Партнёры):
@@ -312,12 +314,11 @@
       if (document.documentElement.clientHeight / 2 >= $advantagesSection.getBoundingClientRect().top) {
         advantagesAnimation.play();
       };
-      if (document.documentElement.clientHeight / 2 >= $productionSection.getBoundingClientRect().top) {
-        productionAnimations.play();
+      if (document.documentElement.clientHeight / 2 >= $servicesSection.getBoundingClientRect().top) {
+        servicesAnimations.play();
       };
       if (document.documentElement.clientHeight / 2 >= $partnersSection.getBoundingClientRect().top) {
         partnersAnimations.play();
-        stopAutoListProducts();
       };
     };
 
@@ -344,112 +345,6 @@
         duration: 0.5,
         scale: 0.85,
       }, "-=1");
-
-    // GSAP Active Products Animations:
-
-    // На десктопах:
-
-    const showProductsDescr = gsap.timeline({
-        paused: true,
-        reversed: true,
-      })
-      .fromTo($productsDescrContainer, {
-        padding: "0 35px",
-      }, {
-        duration: .75,
-        padding: 35,
-      })
-      .fromTo($productsDescrInner, {
-        y: 0,
-        opacity: 0,
-      }, {
-        duration: .75,
-        ease: "power1",
-        y: 25,
-        opacity: 1,
-      }, "-=.75");
-
-    // Active Products:
-
-    let autoListTimer;
-    let autoListStart;
-
-    const showDescription = (el) => {
-      if (!mobileDevices.matches) {
-        hideAllDescription();
-        el.parentNode.classList.add('production__item--active');
-        el.classList.add('production__item-btn--active');
-        setTimeout(() => {
-          $productsDescrInner.innerHTML = el.parentNode.querySelector('.production__content').innerHTML;
-          showProductsDescr.play();
-        }, showProductsDescr.duration() * 1000);
-      };
-    };
-
-    const hideAllDescription = () => {
-      $productsButtons.forEach(el => el.parentNode.classList.remove('production__item--active'));
-      $productsButtons.forEach(el => el.classList.remove('production__item-btn--active'));
-      showProductsDescr.reverse();
-    };
-
-    const autoListProducts = () => {
-      let delay = 5000;
-      let i = 0;
-      autoListStart = setTimeout(function autoList() {
-        showDescription($productsButtons[i]);
-        i += 1;
-        if (i > $productsButtons.length - 1) {
-          i = 0;
-        };
-        autoListStart = setTimeout(autoList, delay);
-      }, 0);
-      return autoListStart;
-    };
-
-    const startAutoListProducts = () => {
-      if (!mobileDevices.matches) {
-        autoListTimer = true;
-        autoListProducts();
-      } else if (mobileDevices.matches || autoListTimer) {
-        stopAutoListProducts();
-      };
-    };
-
-    const stopAutoListProducts = () => {
-      autoListTimer = false;
-      clearTimeout(autoListStart);
-      if (!document.querySelector('.production__item-btn--active')) {
-        showDescription($productsButtons[0]);
-      };
-    };
-
-    startAutoListProducts();
-
-    $productsButtons.forEach((el) => el.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (!mobileDevices.matches) {
-        if (autoListTimer) {
-          autoListTimer = false;
-          clearTimeout(autoListStart);
-        };
-        if (!el.classList.contains('production__item-btn--active')) {
-          showDescription(el);
-        };
-      };
-      if (mobileDevices.matches) {
-        const content = el.parentNode.querySelector('.production__content');
-        const contentHeight = content.scrollHeight + 'px';
-        if (!el.classList.contains('production__item-btn--active')) {
-          el.parentNode.classList.add('production__item--active');
-          el.classList.add('production__item-btn--active');
-          content.style.maxHeight = contentHeight;
-        } else {
-          el.parentNode.classList.remove('production__item--active');
-          el.classList.remove('production__item-btn--active');
-          content.style.maxHeight = 0;
-        };
-      };
-    }));
 
     pageAnimation();
 
