@@ -20,7 +20,7 @@
           slidesPerGroup: 1,
           direction: 'horizontal',
           speed: 1000,
-          // loop: true,
+          loop: true,
           spaceBetween: 50,
           simulateTouch: false,
           touchRatio: 2,

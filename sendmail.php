@@ -4,6 +4,7 @@
 
   require 'phpmailer/src/Exception.php';
   require 'phpmailer/src/PHPMailer.php';
+  require 'phpmailer/src/SMTP.php';
 
   $mail = new PHPMailer(true);
   $mail->CharSet = 'UTF-8';
@@ -11,25 +12,24 @@
   $mail->IsHTML(true);
 
   // Настройки SMTP
-  // $mail->isSMTP();
-  // $mail->SMTPAuth = true;
-  // $mail->SMTPDebug = 0;
+  $mail->isSMTP();
+  $mail->SMTPAuth = true;
+  $mail->SMTPDebug = 0;
 
-  // $mail->Host = 'ssl://smtp.gmail.com';
-  // $mail->Port = 465;
-  // $mail->Username = 'funnydino1@gmail.com';
-  // $mail->Password = 'pzinszogtzgvvuie';
-  // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+  $mail->Host = 'ssl://smtp.timeweb.ru';
+  $mail->Port = 465;
+  $mail->Username = 'admin@vorotakgd.ru';
+  $mail->Password = 'U2ph7U8Q';
 
   // От кого письмо:
-  $mail->setFrom('admin@funnydino.tmweb.ru', 'FunnyDino');
+  $mail->setFrom('admin@vorotakgd.ru', 'FunnyDino');
   // Кому отправить:
   $mail->addAddress('funnydino1@gmail.com');
   // Тема письма:
   $mail->Subject = 'Новое личное сообщение';
 
   // Тело письма:
-  $body = '<h1>Получено новое личное сообщение с сайта ИП Семенюк А. И.</h1>';
+  $body = '<h1>Получена новая заявка с сайта ИП Семенюк А. И.</h1>';
 
   if(trim(!empty($_POST['name']))){
     $body.='<p><strong>Имя:</strong> '.$_POST['name'].'</p>';
@@ -45,9 +45,9 @@
 
   // Отправляем:
   if (!$mail->send()) {
-    $message = 'Ошибка';
+    $message = 'Ошибка :(';
   } else {
-    $message = 'Данные отправлены!';
+    $message = 'Заявка отправлена.';
   }
 
   $response = ['message' => $message];
