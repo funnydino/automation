@@ -20,6 +20,15 @@
   $mail->Port = 465;
   $mail->Username = 'admin@vorotakgd.ru';
   $mail->Password = 'U2ph7U8Q';
+  $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+
+  // Настройки DKIM:
+
+  $mail->DKIM_domain = "vorotakgd.ru";
+  $mail->DKIM_private = "./dkim_key/rsa.private";
+  $mail->DKIM_selector = "mainkey";
+  $mail->DKIM_passphrase = "";
+  $mail->DKIM_identifier = $mail->From;
 
   // От кого письмо:
   $mail->setFrom('admin@vorotakgd.ru', 'FunnyDino');

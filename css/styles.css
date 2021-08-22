@@ -169,6 +169,10 @@ section {
   z-index: -1;
 }
 
+._hidden {
+  opacity: 0;
+}
+
 .section-title {
   margin-bottom: 20px;
   font-size: 42px;
@@ -552,6 +556,7 @@ section {
   background-position: center;
   background-size: cover;
   animation: hero__bg-scale 5s linear infinite alternate, hero__bg-change--fhd 25s cubic-bezier(.9, .05, .9, .05) infinite alternate;
+  will-change: transform;
   z-index: -1;
 }
 

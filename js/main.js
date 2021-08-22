@@ -162,6 +162,8 @@
 
     // GSAP Animations:
 
+    document.querySelectorAll('._hidden').forEach(el => el.classList.remove('_hidden'));
+
     // Анимация меню:
 
     const openMenu = gsap.timeline({
