@@ -273,7 +273,8 @@ section {
 }
 
 .header--fixed {
-  position: fixed;
+  position: sticky;
+  top: 0;
   transform: translateY(0);
 }
 
